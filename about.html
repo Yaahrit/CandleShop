@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The story behind Vesper & Vine — A narrative of light, earth, and artisanal candle making. Learn about our sustainable practices and small-batch process.">
+  <title>About — Vesper &amp; Vine</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <h2>Vesper &amp; Vine</h2>
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" id="searchClose"><i class="bi bi-x-lg"></i></button>
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search candles, scents...">
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-vesper fixed-top" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-vesper d-flex align-items-center" href="index.html">
+        <svg class="brand-logo-svg" viewBox="0 0 40 40" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-right: 10px; vertical-align: middle;">
+          <path d="M20 8C20 8 13 16 13 22C13 25.866 16.134 29 20 29C23.866 29 27 25.866 27 22C27 16 20 8 20 8Z" stroke="var(--clr-accent)" stroke-width="1.5" fill="none" />
+          <path d="M14 26C17 25 21 21 24 16C27 11 28 8 28 8C28 8 24 10 20 14C16 18 15 23 14 26Z" fill="var(--clr-accent-light)" opacity="0.85" stroke="none" />
+        </svg>
+        <span>Vesper &amp; Vine</span>
+      </a>
+      
+      <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="custom-hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="journal.html">Journal</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="navbar-icons">
+        <a href="#" id="searchBtn" aria-label="Search"><i class="bi bi-search"></i></a>
+        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#profileOffcanvas" aria-label="Account">
+          <i class="bi bi-person"></i>
+          <span class="cart-count" style="display:none; position: absolute; top: -4px; right: -4px; width: 14px; height: 14px; background: var(--clr-gold); color: var(--clr-white); border-radius: 50%; font-size: 8px; display: flex; align-items: center; justify-content: center; font-weight: 600; border: 1px solid var(--clr-white);">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="about-hero-img">
+      <img src="images/about_pouring.png" alt="The art of candle pouring">
+    </div>
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-content">
+      <span class="section-label">About Us</span>
+      <h1>The Art of the Pour</h1>
+      <p>Handcrafted — Small Batch — Naturally Sourced</p>
+    </div>
+  </section>
+
+  <!-- Brand Logo Section -->
+  <section style="padding: 4rem 0; text-align: center; background: var(--clr-cream);">
+    <div class="container reveal">
+      <div class="brand-logo-container d-flex align-items-center justify-content-center" style="width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 1.5rem; background: var(--clr-bg-alt); box-shadow: var(--shadow-lg);">
+        <svg class="brand-logo-svg" viewBox="0 0 40 40" width="80" height="80" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20 8C20 8 13 16 13 22C13 25.866 16.134 29 20 29C23.866 29 27 25.866 27 22C27 16 20 8 20 8Z" stroke="var(--clr-accent)" stroke-width="1.5" fill="none" />
+          <path d="M14 26C17 25 21 21 24 16C27 11 28 8 28 8C28 8 24 10 20 14C16 18 15 23 14 26Z" fill="var(--clr-accent-light)" opacity="0.85" stroke="none" />
+        </svg>
+      </div>
+      <h3 style="font-family: var(--ff-heading); font-size: 1.8rem; letter-spacing: 0.05em; font-weight: 300;">Vesper &amp; Vine</h3>
+      <p style="color: var(--clr-text-muted); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">Est. 2019</p>
+    </div>
+  </section>
+
+  <!-- Story Section: A Narrative of Light and Earth -->
+  <section class="story-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal-left">
+          <h2>A Narrative of Light and Earth</h2>
+          <p>
+            Rooted in the quiet coastal city of Charleston, Vesper &amp; Vine began as 
+            a personal meditation — our founder, Flora Merrit, sought to capture the 
+            soft-edged memories of foggy morning walks and the sun-drenched amber 
+            glow of her childhood summers.
+          </p>
+          <p>
+            What started as an experiment in a small kitchen has bloomed into a 
+            commitment to slow beauty. We believe that a candle is more than an 
+            object; it is a ritual that anchors you to the present moment, transforming 
+            the atmosphere of a room the way the golden sun fills a clearing light.
+          </p>
+          <p>
+            Every scent is a testament to our dedication to the artisan process — no 
+            chemicals, no synthetic fillers, just the pure essence of nature captured in 
+            glass.
+          </p>
+
+          <blockquote class="story-quote">
+            "Scent is the most intimate doorway to our inner sanctuary."
+          </blockquote>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <div class="story-image">
+            <img src="images/about_ingredients.png" alt="Natural candle ingredients" class="parallax-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Purity in Every Element -->
+  <section class="purity-section">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="section-label">Our Commitment</span>
+        <h2 style="font-style: italic; font-weight: 300;">Purity in Every Element</h2>
+        <p style="color: var(--clr-text-light); max-width: 600px; margin: 1rem auto 0; font-size: 0.9rem;">
+          We meticulously source every ingredient to ensure they are as natural as the 
+          earth that brings them to your home.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4 reveal delay-1">
+          <div class="purity-card">
+            <div class="purity-icon"><i class="bi bi-flower1"></i></div>
+            <h4>Natural Wax</h4>
+            <p>100% renewable, American-grown soy wax free of additives, blended with coconut wax for premium scent throw and clean burn with no soot or paraffin.</p>
+          </div>
+        </div>
+        <div class="col-md-4 reveal delay-2">
+          <div class="purity-card">
+            <div class="purity-icon"><i class="bi bi-droplet"></i></div>
+            <h4>Essential Oils</h4>
+            <p>Pure botanical extracts and phthalate-free fragrance oils, carefully blended for an even, natural aroma that fills your space without overwhelming it.</p>
+          </div>
+        </div>
+        <div class="col-md-4 reveal delay-3">
+          <div class="purity-card">
+            <div class="purity-icon"><i class="bi bi-wind"></i></div>
+            <h4>Clean Burn</h4>
+            <p>Lead-free cotton and wood wicks crafted for an even pour and long, consistent burn — creating a serene atmosphere every time you light the flame.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Designed for a Second Life -->
+  <section class="sustainability-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal-left">
+          <div class="sustainability-image">
+            <img src="images/lifestyle_shelf.png" alt="Reused candle vessels as vases" class="parallax-img">
+          </div>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <span class="section-label">Sustainability</span>
+          <h2>Designed for a Second Life</h2>
+          <p style="color: var(--clr-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem;">
+            Sustainability is not a feature at Vesper &amp; Vine; it is the 
+            foundation. Our packaging is 100% plastic-free, utilizing recycled 
+            paper, soy ink, and reusable vessel lids.
+          </p>
+
+          <div class="sustainability-feature">
+            <i class="bi bi-check-circle"></i>
+            <div>
+              <h5>Zero Waste Packaging</h5>
+              <p>Every box is biodegradable and designed for easy recycling.</p>
+            </div>
+          </div>
+
+          <div class="sustainability-feature">
+            <i class="bi bi-check-circle"></i>
+            <div>
+              <h5>Reusable Vessels</h5>
+              <p>Our heavy-weight glass jars are hand-sized to be reused as botanical vases, desk organizers, or storage containers.</p>
+            </div>
+          </div>
+
+          <div class="sustainability-feature">
+            <i class="bi bi-check-circle"></i>
+            <div>
+              <h5>Carbon-Neutral Shipping</h5>
+              <p>We offset 100% of our shipping emissions through verified carbon credit programs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Hands Behind the Light -->
+  <section class="team-section">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="section-label">Our Team</span>
+        <h2 style="font-style: italic; font-weight: 300;">The Hands Behind the Light</h2>
+        <p style="color: var(--clr-text-light); max-width: 500px; margin: 1rem auto 0; font-size: 0.9rem;">
+          Our small team of dedicated artisans infuse care, skill, and passion into every single candle that leaves our studio.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-3 reveal delay-1">
+          <div class="team-card">
+            <div class="team-card-img">
+              <img src="images/candle_lavender.png" alt="Flora — Founder & Lead Chandler">
+            </div>
+            <h4>Flora</h4>
+            <p>Founder &amp; Lead Chandler</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal delay-2">
+          <div class="team-card">
+            <div class="team-card-img">
+              <img src="images/candle_eucalyptus.png" alt="Diana — Head of Fragrance">
+            </div>
+            <h4>Diana</h4>
+            <p>Head of Fragrance</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal delay-3">
+          <div class="team-card">
+            <div class="team-card-img">
+              <img src="images/candle_sea_salt.png" alt="Marcus — Production & QA">
+            </div>
+            <h4>Marcus</h4>
+            <p>Production &amp; QA</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal delay-4">
+          <div class="team-card">
+            <div class="team-card-img">
+              <img src="images/candle_spiced_cedar.png" alt="Elena — Creative Director">
+            </div>
+            <h4>Elena</h4>
+            <p>Creative Director</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section style="padding: 5rem 0; background: var(--clr-bg-dark); text-align: center;">
+    <div class="container reveal">
+      <span class="section-label" style="color: rgba(255,255,255,0.5);">Experience the Craft</span>
+      <h2 style="color: var(--clr-white); font-style: italic; font-weight: 300; margin-bottom: 1.5rem;">
+        Ready to find your signature scent?
+      </h2>
+      <a href="shop.html" class="btn-vesper-white"><span>Shop the Collection</span></a>
+    </div>
+  </section>
+
+  <!-- Enhanced Footer -->
+  <footer class="footer-enhanced">
+    <div class="footer-top-banner">
+      <div class="container">
+        <div class="footer-benefit"><i class="bi bi-truck"></i> Free Shipping Over $100</div>
+        <div class="footer-benefit"><i class="bi bi-arrow-repeat"></i> 30-Day Returns</div>
+        <div class="footer-benefit"><i class="bi bi-shield-check"></i> Secure Payment</div>
+        <div class="footer-benefit"><i class="bi bi-leaf"></i> Eco-Friendly Packaging</div>
+      </div>
+    </div>
+    <div class="footer-main">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-brand">
+              <h4 class="d-flex align-items-center" style="color: var(--clr-white);">
+                <svg class="brand-logo-svg" viewBox="0 0 40 40" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-right: 8px;">
+                  <path d="M20 8C20 8 13 16 13 22C13 25.866 16.134 29 20 29C23.866 29 27 25.866 27 22C27 16 20 8 20 8Z" stroke="var(--clr-accent)" stroke-width="1.5" fill="none" />
+                  <path d="M14 26C17 25 21 21 24 16C27 11 28 8 28 8C28 8 24 10 20 14C16 18 15 23 14 26Z" fill="var(--clr-accent-light)" opacity="0.85" stroke="none" />
+                </svg>
+                <span>Vesper &amp; Vine</span>
+              </h4>
+              <p>Elevating everyday rituals through the power of handcrafted, all-natural scent.</p>
+              <div class="footer-social mt-3">
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              </div>
+              <!-- Trustpilot Rating Badge -->
+              <div class="footer-trustpilot-badge">
+                <div class="trustpilot-stars">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <span>Excellent 4.9/5 on <span class="trustpilot-logo-text">Trustpilot</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2 col-md-3">
+            <h6 class="footer-heading">Shop</h6>
+            <ul class="footer-links">
+              <li><a href="shop.html">All Candles</a></li>
+              <li><a href="shop.html">Best Sellers</a></li>
+              <li><a href="shop.html">Gift Sets</a></li>
+              <li><a href="shop.html">Subscriptions</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 col-md-3">
+            <h6 class="footer-heading">Company</h6>
+            <ul class="footer-links">
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="about.html">Sustainability</a></li>
+              <li><a href="journal.html">Journal</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h6 class="footer-heading">Stay Connected</h6>
+            <div class="footer-newsletter-enhanced">
+              <p>Be the first to know about new scents, seasonal collections, and exclusive offers.</p>
+              <form class="newsletter-form">
+                <input type="email" placeholder="your email address" required>
+                <button type="submit"><i class="bi bi-arrow-right"></i></button>
+              </form>
+              <div class="footer-payment-icons">
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#1A1F71"/>
+                    <path d="M13.8 15.6h1.7l1.1-6.7h-1.7l-1.1 6.7zm6.7-6.5c-.4-.2-.9-.3-1.4-.3-1.5 0-2.6.8-2.6 2 0 .9.8 1.4 1.4 1.7.6.3.8.5.8.8 0 .4-.5.6-1 .6-.7 0-1.1-.1-1.6-.4l-.2 1.3c.4.2 1.1.3 1.8.3 1.6 0 2.7-.8 2.7-2.1 0-.7-.4-1.2-1.3-1.6-.5-.3-.9-.5-.9-.8 0-.3.3-.6.9-.6.5 0 1 .1 1.3.3l.1-1.3zm3.7-.2h-1.3c-.4 0-.7.2-.9.6l-2.5 6.1h1.8l.4-1h2.2l.2 1h1.6l-1.5-6.7zm-2.2 3.8l.7-2 1 2h-1.7zm-14.8-3.8l1.6 4.3.6-3.1c-.1-.3-.4-.6-.7-.8L7.2 9.1zm3.3 6.7l1-6.7H9.7c-.2 0-.4.1-.5.3L6.4 13.8l2.2 1.8h2.9z" fill="#FFF"/>
+                  </svg>
+                </div>
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#222"/>
+                    <circle cx="15.5" cy="12" r="6" fill="#EB001B"/>
+                    <circle cx="20.5" cy="12" r="6" fill="#F79E1B" fill-opacity="0.85"/>
+                  </svg>
+                </div>
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#003087"/>
+                    <path d="M12.5 16.8h1.8l1-6.1h-1.8l-1 6.1zm6-6.1c-.8 0-1.5.3-2 .8l.3-1.8h-1.8l-1 6.1h1.8l.9-5.3c0-.3.2-.5.5-.5h.5c.6 0 1 .4 1 1 0 .2 0 .4-.1.6l-.6 3.7h1.8l.6-3.8c.2-.9-.3-1.8-1.5-1.8z" fill="#FFF"/>
+                    <path d="M15.2 6.5C15 5.8 14.3 5 13 5H9.5c-.4 0-.7.3-.8.7L7 16.1c0 .2.1.4.3.4h2.5c.3 0 .5-.2.6-.5l.8-4.9c0-.2.2-.4.5-.4h1c2.1 0 3.7-1 4.2-3.1.2-1 .1-1.7-.5-2.1z" fill="#0079C1"/>
+                  </svg>
+                </div>
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#000"/>
+                    <path d="M12.4 8.7c-.5.6-1.3 1-2.1.9c-.1-.8.3-1.6.8-2.2c.5-.6 1.4-1 2.1-.9c.1.8-.3 1.6-.8 2.2zm1 3.5c-.3.5-.8.9-1.3 1.2c-.4.2-1 .3-1.5.3c-.6 0-1.1-.1-1.5-.3c-.5-.3-1-.7-1.3-1.2c-.4-.7-.6-1.5-.6-2.3c0-.8.2-1.6.6-2.3c.3-.5.8-.9 1.3-1.2c.4-.2 1-.3 1.5-.3c.6 0 1.1.1 1.5.3c.5.3 1 .7 1.3 1.2c.4.7.6 1.5.6 2.3c0 .8-.2 1.6-.6 2.3zm5.7-4.1h-1.2v3.7c0 .5.1.8.3.9c.2.1.5.2.9.2h.5V14h-.7c-.9 0-1.5-.2-1.8-.6c-.3-.4-.4-1.1-.4-2.1V8.1h-1.2V7.1h1.2V5.5h1.1v1.6h1.3v1zm6.7 1.9c-.1-.6-.3-1.1-.6-1.4c-.3-.3-.8-.5-1.4-.5c-.6 0-1.1.2-1.5.6c-.4.4-.6.9-.6 1.6V12c.1.6.3 1.1.6 1.4c.3.3.8.5 1.4.5c.6 0 1.1-.2 1.5-.6c.4-.4.6-.9.6-1.6v-2zm.8-1.9v4c0 .6-.2 1.1-.5 1.4c-.3.3-.8.5-1.4.5c-.6 0-1.1-.2-1.4-.5c-.3-.3-.5-.8-.5-1.4v-4c0-.6.2-1.1.5-1.4c.3-.3.8-.5 1.4-.5c.6 0 1.1.2 1.4.5c.3.3.5.8.5 1.4zm6.7.1l-1.5 3.3v2.8h-1.1V9.9L30.6 7.2h1.2l.9 2.1l.9-2.1h1.2z" fill="#FFF"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-enhanced">
+      <div class="container">
+        <p>&copy; 2024 Vesper &amp; Vine. Consciously crafted in small batches &bull; Baltimore, Maryland.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

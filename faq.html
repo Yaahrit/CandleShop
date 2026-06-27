@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frequently Asked Questions about Vesper & Vine candles. Find answers about shipping, ingredients, candle care, returns, and subscriptions.">
+  <title>FAQ — Vesper &amp; Vine</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <h2>Vesper &amp; Vine</h2>
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" id="searchClose"><i class="bi bi-x-lg"></i></button>
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search candles, scents...">
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-vesper fixed-top" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-vesper d-flex align-items-center" href="index.html">
+        <svg class="brand-logo-svg" viewBox="0 0 40 40" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-right: 10px; vertical-align: middle;">
+          <path d="M20 8C20 8 13 16 13 22C13 25.866 16.134 29 20 29C23.866 29 27 25.866 27 22C27 16 20 8 20 8Z" stroke="var(--clr-accent)" stroke-width="1.5" fill="none" />
+          <path d="M14 26C17 25 21 21 24 16C27 11 28 8 28 8C28 8 24 10 20 14C16 18 15 23 14 26Z" fill="var(--clr-accent-light)" opacity="0.85" stroke="none" />
+        </svg>
+        <span>Vesper &amp; Vine</span>
+      </a>
+      <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="custom-hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="journal.html">Journal</a></li>
+          <li class="nav-item"><a class="nav-link active" href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="navbar-icons">
+        <a href="#" id="searchBtn" aria-label="Search"><i class="bi bi-search"></i></a>
+        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#profileOffcanvas" aria-label="Account">
+          <i class="bi bi-person"></i>
+          <span class="cart-count" style="display:none; position: absolute; top: -4px; right: -4px; width: 14px; height: 14px; background: var(--clr-gold); color: var(--clr-white); border-radius: 50%; font-size: 8px; display: flex; align-items: center; justify-content: center; font-weight: 600; border: 1px solid var(--clr-white);">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FAQ Page -->
+  <section class="faq-page-section">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="text-center mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+        <span class="section-label reveal">Help Center</span>
+        <h1 class="reveal delay-1" style="font-style: italic; font-weight: 300;">Frequently Asked Questions</h1>
+        <p class="reveal delay-2" style="color: var(--clr-text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+          Everything you need to know about our candles, shipping, and more. Can't find your answer? Get in touch.
+        </p>
+      </div>
+
+      <!-- FAQ Stats Section -->
+      <div class="row faq-stats-container justify-content-center g-4 reveal delay-2">
+        <div class="col-6 col-md-4 faq-stat-item">
+          <div class="faq-stat-number">1500+</div>
+          <p class="faq-stat-label">Orders Delivered</p>
+        </div>
+        <div class="col-6 col-md-4 faq-stat-item">
+          <div class="faq-stat-number">98%</div>
+          <p class="faq-stat-label">Customer Satisfaction</p>
+        </div>
+        <div class="col-6 col-md-4 faq-stat-item">
+          <div class="faq-stat-number">24h</div>
+          <p class="faq-stat-label">Average Support Time</p>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="d-flex justify-content-center reveal delay-2">
+        <div class="faq-search-box" id="faqSearchBox" style="margin-bottom: 1.5rem;">
+          <i class="bi bi-search"></i>
+          <input type="text" placeholder="Search your question..." id="faqSearchInput">
+        </div>
+      </div>
+
+      <!-- Search Suggestions -->
+      <div class="faq-search-suggestions reveal delay-2">
+        <span>Suggested:</span>
+        <button class="faq-suggest-tag" onclick="setFaqSearch('shipping')">shipping</button>
+        <button class="faq-suggest-tag" onclick="setFaqSearch('return policy')">return policy</button>
+        <button class="faq-suggest-tag" onclick="setFaqSearch('subscription')">subscription</button>
+        <button class="faq-suggest-tag" onclick="setFaqSearch('burn time')">burn time</button>
+      </div>
+
+      <!-- Popular Questions Section -->
+      <div class="faq-popular-section reveal delay-3">
+        <div class="faq-popular-title">🔥 Most Asked</div>
+        <div class="faq-popular-links">
+          <button class="faq-popular-link" onclick="openPopularFaq('shipping', 'How long does shipping take?')">Shipping time</button>
+          <button class="faq-popular-link" onclick="openPopularFaq('care', 'How should I care for my candle?')">Candle care</button>
+          <button class="faq-popular-link" onclick="openPopularFaq('orders', 'What is your return policy?')">Returns</button>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="faq-category-tabs justify-content-center d-flex reveal delay-3">
+        <button class="faq-category-btn active" data-category="all">All</button>
+        <button class="faq-category-btn" data-category="products">Products</button>
+        <button class="faq-category-btn" data-category="shipping">Shipping</button>
+        <button class="faq-category-btn" data-category="orders">Orders</button>
+        <button class="faq-category-btn" data-category="care">Candle Care</button>
+        <button class="faq-category-btn" data-category="subscription">Subscription</button>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="faq-accordion mx-auto">
+        <!-- Products -->
+        <div class="faq-item reveal" data-category="products">
+          <button class="faq-question">
+            What type of wax do you use?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>All Vesper &amp; Vine candles are made with 100% natural soy wax, sourced from American-grown soybeans. We blend it with a small amount of coconut wax for optimal scent throw and a smooth, clean burn. Our wax is free from paraffin, additives, and synthetic dyes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="products">
+          <button class="faq-question">
+            Are your fragrances natural?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We use a carefully curated blend of pure essential oils and phthalate-free fragrance oils. Every scent is formulated to be non-toxic and safe for your home. Our fragrance blends are never tested on animals and are compliant with IFRA standards.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="products">
+          <button class="faq-question">
+            How long do your candles burn?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Our standard 12 oz candle provides approximately 60-65 hours of burn time. The 8 oz size offers about 45 hours, and our travel tins burn for approximately 25 hours. Actual burn time may vary based on environmental conditions and proper wick maintenance.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="products">
+          <button class="faq-question">
+            Can I reuse the glass jar after the candle burns out?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely! Our jars are designed for a second life. Simply place the jar in hot water to melt any remaining wax, clean with soap and warm water, and remove the wick tab. The heavy-weight amber glass jars are perfect as botanical vases, pencil holders, or bathroom storage containers.</p>
+          </div>
+        </div>
+
+        <!-- Shipping -->
+        <div class="faq-item reveal" data-category="shipping">
+          <button class="faq-question">
+            Do you offer free shipping?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! We offer complimentary standard shipping on all orders over $100 within the contiguous United States. Orders under $100 ship for a flat rate of $6.95. We also offer express shipping options at checkout. All our shipping is carbon-neutral through verified offset programs.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="shipping">
+          <button class="faq-question">
+            How long does shipping take?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Standard shipping typically arrives in 5-7 business days. Express shipping delivers in 2-3 business days. During peak seasons (holidays), please allow an extra 1-2 days. You'll receive a tracking number via email once your order ships.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="shipping">
+          <button class="faq-question">
+            Do you ship internationally?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Currently, we ship to the United States, Canada, the United Kingdom, and select EU countries. International shipping rates are calculated at checkout based on weight and destination. Please note that customers are responsible for any customs duties or import fees.</p>
+          </div>
+        </div>
+
+        <!-- Orders -->
+        <div class="faq-item reveal" data-category="orders">
+          <button class="faq-question">
+            What is your return policy?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We accept returns within 30 days of delivery for unused, unopened candles in their original packaging. If your candle arrives damaged, please contact us within 48 hours with a photo, and we'll send a replacement at no charge. Please note that opened or partially burned candles cannot be returned for hygiene reasons.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="orders">
+          <button class="faq-question">
+            Can I modify or cancel my order?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We process orders quickly, but if you need to make changes, please contact us within 2 hours of placing your order. After that window, we may not be able to modify or cancel your order as it may already be in preparation. Contact our team at  hello@vesperandvine.com.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="orders">
+          <button class="faq-question">
+            Do you offer gift wrapping?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! We offer complimentary gift wrapping on all orders. During checkout, simply select the "Gift Wrap" option and add a personalized note. Our gift wrapping uses recycled kraft paper, natural twine, and a dried botanical sprig for an eco-friendly presentation.</p>
+          </div>
+        </div>
+
+        <!-- Candle Care -->
+        <div class="faq-item reveal" data-category="care">
+          <button class="faq-question">
+            How should I care for my candle?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>For the best experience: trim the wick to 1/4 inch before each burn, allow the wax to melt fully across the surface on the first burn (about 2-3 hours), never burn for more than 4 hours at a time, and keep away from drafts. This ensures an even burn and maximum scent throw throughout the candle's life.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="care">
+          <button class="faq-question">
+            Why is my candle tunneling?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Tunneling (when the wax burns down the center leaving wax on the sides) usually occurs when the candle isn't burned long enough on the first use. Soy wax has a "memory" — the first burn should last until the entire surface has melted. If tunneling has occurred, try wrapping aluminum foil around the top edge to trap heat and help the wax pool evenly.</p>
+          </div>
+        </div>
+
+        <!-- Subscription -->
+        <div class="faq-item reveal" data-category="subscription">
+          <button class="faq-question">
+            How does the scent subscription work?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Our Seasonal Discovery subscription delivers a curated candle to your door every 3 months. Each selection is hand-picked by our master chandler based on the season. You can choose between our Monthly ($38/month), Bi-Monthly ($40/shipment), or Seasonal ($42/quarter) plans. All subscription orders include free shipping and exclusive scents not available in our shop.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" data-category="subscription">
+          <button class="faq-question">
+            Can I skip or pause my subscription?
+            <i class="bi bi-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, absolutely! You can skip a delivery, pause, or cancel your subscription at any time from your account dashboard. Changes must be made at least 7 days before your next billing date. There are no cancellation fees or long-term commitments.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="faq-contact-cta reveal">
+        <h3>Still have questions?</h3>
+        <p class="mb-2">Our team is here to help you find the perfect scent or resolve any concerns.</p>
+        <p class="text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 0.1em; color: var(--clr-gold);">
+          Average response time: under 4 hours
+        </p>
+        <div class="mb-4">
+          <a href="mailto:hello@vesperandvine.com" class="contact-support-gold-btn">
+            <i class="bi bi-envelope-fill"></i> Contact Support
+          </a>
+        </div>
+        <div class="faq-contact-methods">
+          <a href="mailto:hello@vesperandvine.com" class="faq-contact-method">
+            <i class="bi bi-envelope"></i> hello@vesperandvine.com
+          </a>
+          <a href="#" class="faq-contact-method">
+            <i class="bi bi-chat-dots"></i> Live Chat
+          </a>
+          <a href="#" class="faq-contact-method">
+            <i class="bi bi-instagram"></i> @vesperandvine
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Footer -->
+  <footer class="footer-enhanced">
+    <div class="footer-top-banner">
+      <div class="container">
+        <div class="footer-benefit"><i class="bi bi-truck"></i> Free Shipping Over $100</div>
+        <div class="footer-benefit"><i class="bi bi-arrow-repeat"></i> 30-Day Returns</div>
+        <div class="footer-benefit"><i class="bi bi-shield-check"></i> Secure Payment</div>
+        <div class="footer-benefit"><i class="bi bi-leaf"></i> Eco-Friendly Packaging</div>
+      </div>
+    </div>
+    <div class="footer-main">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-brand">
+              <h4 class="d-flex align-items-center" style="color: var(--clr-white);">
+                <svg class="brand-logo-svg" viewBox="0 0 40 40" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-right: 8px;">
+                  <path d="M20 8C20 8 13 16 13 22C13 25.866 16.134 29 20 29C23.866 29 27 25.866 27 22C27 16 20 8 20 8Z" stroke="var(--clr-accent)" stroke-width="1.5" fill="none" />
+                  <path d="M14 26C17 25 21 21 24 16C27 11 28 8 28 8C28 8 24 10 20 14C16 18 15 23 14 26Z" fill="var(--clr-accent-light)" opacity="0.85" stroke="none" />
+                </svg>
+                <span>Vesper &amp; Vine</span>
+              </h4>
+              <p>Artisanal fragrances designed to ground your space and elevate your daily rituals. Consciously crafted in small batches.</p>
+              <div class="footer-social mt-3">
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              </div>
+              <!-- Trustpilot Rating Badge -->
+              <div class="footer-trustpilot-badge">
+                <div class="trustpilot-stars">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <span>Excellent 4.9/5 on <span class="trustpilot-logo-text">Trustpilot</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2 col-md-3">
+            <h6 class="footer-heading">Shop</h6>
+            <ul class="footer-links">
+              <li><a href="shop.html">All Candles</a></li>
+              <li><a href="shop.html">Best Sellers</a></li>
+              <li><a href="shop.html">New Arrivals</a></li>
+              <li><a href="shop.html">Gift Sets</a></li>
+              <li><a href="shop.html">Subscriptions</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 col-md-3">
+            <h6 class="footer-heading">Company</h6>
+            <ul class="footer-links">
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="about.html">Sustainability</a></li>
+              <li><a href="journal.html">Journal</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h6 class="footer-heading">Stay Connected</h6>
+            <div class="footer-newsletter-enhanced">
+              <p>Be the first to know about new scents, seasonal collections, and exclusive offers.</p>
+              <form class="newsletter-form">
+                <input type="email" placeholder="your email address" required>
+                <button type="submit"><i class="bi bi-arrow-right"></i></button>
+              </form>
+              <div class="footer-payment-icons">
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#1A1F71"/>
+                    <path d="M13.8 15.6h1.7l1.1-6.7h-1.7l-1.1 6.7zm6.7-6.5c-.4-.2-.9-.3-1.4-.3-1.5 0-2.6.8-2.6 2 0 .9.8 1.4 1.4 1.7.6.3.8.5.8.8 0 .4-.5.6-1 .6-.7 0-1.1-.1-1.6-.4l-.2 1.3c.4.2 1.1.3 1.8.3 1.6 0 2.7-.8 2.7-2.1 0-.7-.4-1.2-1.3-1.6-.5-.3-.9-.5-.9-.8 0-.3.3-.6.9-.6.5 0 1 .1 1.3.3l.1-1.3zm3.7-.2h-1.3c-.4 0-.7.2-.9.6l-2.5 6.1h1.8l.4-1h2.2l.2 1h1.6l-1.5-6.7zm-2.2 3.8l.7-2 1 2h-1.7zm-14.8-3.8l1.6 4.3.6-3.1c-.1-.3-.4-.6-.7-.8L7.2 9.1zm3.3 6.7l1-6.7H9.7c-.2 0-.4.1-.5.3L6.4 13.8l2.2 1.8h2.9z" fill="#FFF"/>
+                  </svg>
+                </div>
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#222"/>
+                    <circle cx="15.5" cy="12" r="6" fill="#EB001B"/>
+                    <circle cx="20.5" cy="12" r="6" fill="#F79E1B" fill-opacity="0.85"/>
+                  </svg>
+                </div>
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#003087"/>
+                    <path d="M12.5 16.8h1.8l1-6.1h-1.8l-1 6.1zm6-6.1c-.8 0-1.5.3-2 .8l.3-1.8h-1.8l-1 6.1h1.8l.9-5.3c0-.3.2-.5.5-.5h.5c.6 0 1 .4 1 1 0 .2 0 .4-.1.6l-.6 3.7h1.8l.6-3.8c.2-.9-.3-1.8-1.5-1.8z" fill="#FFF"/>
+                    <path d="M15.2 6.5C15 5.8 14.3 5 13 5H9.5c-.4 0-.7.3-.8.7L7 16.1c0 .2.1.4.3.4h2.5c.3 0 .5-.2.6-.5l.8-4.9c0-.2.2-.4.5-.4h1c2.1 0 3.7-1 4.2-3.1.2-1 .1-1.7-.5-2.1z" fill="#0079C1"/>
+                  </svg>
+                </div>
+                <div class="footer-payment-icon" style="background: none; width: auto; height: auto;">
+                  <svg viewBox="0 0 36 24" width="36" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="24" rx="3" fill="#000"/>
+                    <path d="M12.4 8.7c-.5.6-1.3 1-2.1.9c-.1-.8.3-1.6.8-2.2c.5-.6 1.4-1 2.1-.9c.1.8-.3 1.6-.8 2.2zm1 3.5c-.3.5-.8.9-1.3 1.2c-.4.2-1 .3-1.5.3c-.6 0-1.1-.1-1.5-.3c-.5-.3-1-.7-1.3-1.2c-.4-.7-.6-1.5-.6-2.3c0-.8.2-1.6.6-2.3c.3-.5.8-.9 1.3-1.2c.4-.2 1-.3 1.5-.3c.6 0 1.1.1 1.5.3c.5.3 1 .7 1.3 1.2c.4.7.6 1.5.6 2.3c0 .8-.2 1.6-.6 2.3zm5.7-4.1h-1.2v3.7c0 .5.1.8.3.9c.2.1.5.2.9.2h.5V14h-.7c-.9 0-1.5-.2-1.8-.6c-.3-.4-.4-1.1-.4-2.1V8.1h-1.2V7.1h1.2V5.5h1.1v1.6h1.3v1zm6.7 1.9c-.1-.6-.3-1.1-.6-1.4c-.3-.3-.8-.5-1.4-.5c-.6 0-1.1.2-1.5.6c-.4.4-.6.9-.6 1.6V12c.1.6.3 1.1.6 1.4c.3.3.8.5 1.4.5c.6 0 1.1-.2 1.5-.6c.4-.4.6-.9.6-1.6v-2zm.8-1.9v4c0 .6-.2 1.1-.5 1.4c-.3.3-.8.5-1.4.5c-.6 0-1.1-.2-1.4-.5c-.3-.3-.5-.8-.5-1.4v-4c0-.6.2-1.1.5-1.4c.3-.3.8-.5 1.4-.5c.6 0 1.1.2 1.4.5c.3.3.5.8.5 1.4zm6.7.1l-1.5 3.3v2.8h-1.1V9.9L30.6 7.2h1.2l.9 2.1l.9-2.1h1.2z" fill="#FFF"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-enhanced">
+      <div class="container">
+        <p>&copy; 2024 Vesper &amp; Vine. Consciously crafted in small batches &bull; Baltimore, Maryland.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Set FAQ Search query from suggested tags
+    window.setFaqSearch = function(val) {
+      const input = document.getElementById('faqSearchInput');
+      if (input) {
+        input.value = val;
+        input.dispatchEvent(new Event('input'));
+        input.focus();
+      }
+    };
+
+    // Open popular FAQ item and scroll to it
+    window.openPopularFaq = function(category, questionText) {
+      // 1. Switch to correct category tab
+      const catBtn = document.querySelector(`.faq-category-btn[data-category="${category}"]`);
+      if (catBtn) {
+        catBtn.click();
+      }
+
+      // 2. Find and open matching question
+      setTimeout(() => {
+        const questions = document.querySelectorAll('.faq-item');
+        questions.forEach(item => {
+          const qText = item.querySelector('.faq-question').textContent.trim();
+          if (qText.toLowerCase().includes(questionText.toLowerCase()) || questionText.toLowerCase().includes(qText.toLowerCase())) {
+            // Close other items
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+              if (openItem !== item) {
+                openItem.classList.remove('open');
+                const openAnswer = openItem.querySelector('.faq-answer');
+                if (openAnswer) {
+                  openAnswer.style.maxHeight = '0';
+                  openAnswer.style.paddingBottom = '0';
+                }
+              }
+            });
+
+            // Toggle item open
+            item.classList.add('open');
+            const answer = item.querySelector('.faq-answer');
+            if (answer) {
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+              answer.style.paddingBottom = '1.3rem';
+            }
+
+            // Scroll to it
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      }, 150);
+    };
+
+    // FAQ Accordion with smooth transitions
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        const answer = item.querySelector('.faq-answer');
+        
+        // Close all other items
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          if (openItem !== item) {
+            openItem.classList.remove('open');
+            const openAnswer = openItem.querySelector('.faq-answer');
+            if (openAnswer) {
+              openAnswer.style.maxHeight = '0';
+              openAnswer.style.paddingBottom = '0';
+            }
+          }
+        });
+        
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('open');
+          if (answer) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            answer.style.paddingBottom = '1.3rem';
+          }
+        } else {
+          item.classList.remove('open');
+          if (answer) {
+            answer.style.maxHeight = '0';
+            answer.style.paddingBottom = '0';
+          }
+        }
+      });
+    });
+
+    // Category filter
+    document.querySelectorAll('.faq-category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.faq-category-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.dataset.category;
+        document.querySelectorAll('.faq-item').forEach(item => {
+          // Reset inline height on filter change to prevent accordion jumping
+          item.classList.remove('open');
+          const answer = item.querySelector('.faq-answer');
+          if (answer) {
+            answer.style.maxHeight = '0';
+            answer.style.paddingBottom = '0';
+          }
+
+          if (category === 'all' || item.dataset.category === category) {
+            item.style.display = '';
+            item.style.animation = 'authFadeIn 0.4s ease';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // FAQ Search
+    const faqSearchInput = document.getElementById('faqSearchInput');
+    if (faqSearchInput) {
+      faqSearchInput.addEventListener('input', () => {
+        const query = faqSearchInput.value.toLowerCase().trim();
+        document.querySelectorAll('.faq-item').forEach(item => {
+          // Reset item accordion
+          item.classList.remove('open');
+          const answer = item.querySelector('.faq-answer');
+          if (answer) {
+            answer.style.maxHeight = '0';
+            answer.style.paddingBottom = '0';
+          }
+
+          const question = item.querySelector('.faq-question').textContent.toLowerCase();
+          const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+          if (query === '' || question.includes(query) || answerText.includes(query)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        // Reset category tabs
+        if (query) {
+          document.querySelectorAll('.faq-category-btn').forEach(b => b.classList.remove('active'));
+        } else {
+          document.querySelector('.faq-category-btn[data-category="all"]').classList.add('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

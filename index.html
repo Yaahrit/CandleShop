@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vesper & Vine — Artisanal fragrances designed to ground your space and elevate your daily rituals. Hand-poured soy candles crafted in small batches."
+    />
+
+    <!-- SEO Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="Vesper & Vine — Consciously Crafted Scents"
+    />
+    <meta
+      property="og:description"
+      content="Artisanal fragrances designed to ground your space and elevate your daily rituals. Hand-poured soy candles crafted in small batches."
+    />
+    <meta property="og:image" content="images/collection_hero.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Vesper & Vine — Consciously Crafted Scents"
+    />
+    <meta
+      name="twitter:description"
+      content="Artisanal fragrances designed to ground your space and elevate your daily rituals. Hand-poured soy candles in amber jars."
+    />
+
+    <title>Vesper & Vine — Consciously Crafted Scents</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="preloader-content">
+        <h2>Vesper &amp; Vine</h2>
+        <div class="preloader-bar"></div>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <button class="search-close" id="searchClose">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="Search candles, scents..."
+        />
+      </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+      <span>✦ Free Shipping on Orders Over $100 &bull; Complimentary Scent Samples with Every Order ✦</span>
+    </div>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-vesper fixed-top"
+      id="mainNavbar"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand navbar-brand-vesper d-flex align-items-center"
+          href="index.html"
+        >
+          <svg
+            class="brand-logo-svg"
+            viewBox="0 0 40 40"
+            width="32"
+            height="32"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            style="margin-right: 10px; vertical-align: middle"
+          >
+            <path
+              d="M20 8C20 8 13 16 13 22C13 25.866 16.134 29 20 29C23.866 29 27 25.866 27 22C27 16 20 8 20 8Z"
+              stroke="var(--clr-accent)"
+              stroke-width="1.5"
+              fill="none"
+            />
+            <path
+              d="M14 26C17 25 21 21 24 16C27 11 28 8 28 8C28 8 24 10 20 14C16 18 15 23 14 26Z"
+              fill="var(--clr-accent-light)"
+              opacity="0.85"
+              stroke="none"
+            />
+          </svg>
+          <span>Vesper &amp; Vine</span>
+        </a>
+
+        <button
+          class="navbar-toggler border-0 p-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <div class="custom-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="journal.html">Journal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">FAQ</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="navbar-icons">
+          <a href="#" id="searchBtn" aria-label="Search"
+            ><i class="bi bi-search"></i
+          ></a>
+          <a
+            href="#"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#profileOffcanvas"
+            aria-label="Account"
+          >
+            <i class="bi bi-person"></i>
+            <span
+              class="cart-count"
+              style="
+                display: none;
+                position: absolute;
+                top: -4px;
+                right: -4px;
+                width: 14px;
+                height: 14px;
+                background: var(--clr-gold);
+                color: var(--clr-white);
+                border-radius: 50%;
+                font-size: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                border: 1px solid var(--clr-white);
+              "
+              >0</span
+            >
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-image-wrapper">
+        <img
+          src="images/hero_candle.png"
+          alt="Vesper & Vine artisanal candle"
+        />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="section-label">Artisanal Fragrances</span>
+        <h1>Consciously Crafted Scents</h1>
+        <p>
+          Hand-poured in small batches. Rooted in nature, refined by intention.
+        </p>
+        <a href="shop.html" class="btn-vesper-white"
+          ><span>Shop the Collection</span></a
+        >
+        <div class="hero-trust-badges mt-3">
+          <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 4.9/5 Trusted by 10,000+ Customers</span>
+          <span class="benefit">&bull; Free Shipping on Orders $100+</span>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="hero-scroll-indicator">
+        <a href="#featured-collection" class="scroll-link">
+          <span>Discover Collection</span>
+          <i class="bi bi-arrow-down"></i>
+        </a>
+      </div>
+    </section>
+
+    <hr class="luxury-divider hero-divider" />
+
+    <!-- Featured Collection Grid -->
+    <section class="featured-grid" id="featured-collection">
+      <div class="container">
+        <div class="row g-3">
+          <div class="col-lg-7 reveal">
+            <a href="shop.html" class="featured-main d-block">
+              <img
+                src="images/collection_hero.png"
+                alt="Seasonal collection"
+                loading="lazy"
+              />
+              <div class="featured-label">Seasonal Edits</div>
+            </a>
+          </div>
+          <div class="col-lg-5 reveal delay-2">
+            <div class="featured-side">
+              <a
+                href="shop.html?category=woody"
+                class="featured-side-item d-block"
+              >
+                <img
+                  src="images/candle_midnight_fig.png"
+                  alt="Woody collection"
+                  loading="lazy"
+                />
+                <div class="featured-label">Woody &amp; Warm</div>
+              </a>
+              <a
+                href="shop.html?category=fresh"
+                class="featured-side-item d-block"
+              >
+                <img
+                  src="images/lifestyle_shelf.png"
+                  alt="Fresh collection"
+                  loading="lazy"
+                />
+                <div class="featured-label">Fresh &amp; Botanical</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" />
+
+    <!-- Featured In Section -->
+    <section
+      class="featured-in-section py-4"
+      style="
+        background-color: var(--clr-bg-alt);
+        border-top: 1px solid var(--clr-border-light);
+        border-bottom: 1px solid var(--clr-border-light);
+      "
+    >
+      <div class="container text-center">
+        <span
+          class="text-uppercase text-muted"
+          style="
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            font-family: var(--ff-body);
+            display: block;
+            margin-bottom: 15px;
+          "
+          >Featured In</span
+        >
+        <div
+          class="row align-items-center justify-content-center g-4"
+          style="opacity: 0.6"
+        >
+          <div class="col-6 col-md-3">
+            <svg class="press-logo" viewBox="0 0 120 30" width="100" height="25" fill="currentColor">
+              <text x="50%" y="22" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="22" letter-spacing="4" text-anchor="middle">VOGUE</text>
+            </svg>
+          </div>
+          <div class="col-6 col-md-3">
+            <svg class="press-logo" viewBox="0 0 120 30" width="100" height="25" fill="currentColor">
+              <text x="50%" y="22" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-weight="700" font-size="20" letter-spacing="1" text-anchor="middle">Forbes</text>
+            </svg>
+          </div>
+          <div class="col-6 col-md-3">
+            <svg class="press-logo" viewBox="0 0 120 30" width="100" height="25" fill="currentColor">
+              <text x="50%" y="21" font-family="'Inter', -apple-system, sans-serif" font-weight="600" font-size="16" letter-spacing="7" text-anchor="middle">ELLE</text>
+            </svg>
+          </div>
+          <div class="col-6 col-md-3">
+            <svg class="press-logo" viewBox="0 0 200 30" width="180" height="25" fill="currentColor">
+              <text x="50%" y="21" font-family="'Inter', -apple-system, sans-serif" font-weight="300" font-size="11" letter-spacing="3" text-anchor="middle" text-transform="uppercase">Architectural Digest</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Craft Section -->
+    <section class="craft-section py-5">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="craft-image-container reveal-left">
+              <img src="images/about_ingredients.png" alt="Handcrafting soy candles" class="img-fluid craft-img rounded-sm">
+            </div>
+          </div>
+          <div class="col-lg-6 reveal">
+            <span class="section-label">The Craft</span>
+            <h2 class="serif-heading mb-3" style="font-family: var(--ff-heading); font-weight: 300;">Honest Ingredients, Patiently Prepared</h2>
+            <p class="craft-text text-muted mb-4" style="line-height: 1.7; font-size: 0.92rem;">Vesper &amp; Vine is anchored in the preservation of slow craftsmanship. Every single candle is hand-poured in our Baltimore, Maryland atelier, utilizing only 100% natural, domestic soy wax, lead-free cotton wicks, and custom-blended botanical fragrance oils. We create clean, slow-burning scent profiles designed to soothe and elevate your space.</p>
+            <div class="craft-pillars">
+              <div class="pillar-item d-flex gap-3 mb-4">
+                <div class="pillar-icon-wrapper">
+                  <i class="bi bi-hand-index-thumb"></i>
+                </div>
+                <div>
+                  <h5 style="font-family: var(--ff-heading); font-size: 1.1rem; margin-bottom: 4px;">Hand Poured in Micro-Batches</h5>
+                  <p class="text-muted mb-0" style="font-size: 0.82rem;">Meticulously crafted in batches of nine to guarantee fragrance consistency and burn quality.</p>
+                </div>
+              </div>
+              <div class="pillar-item d-flex gap-3 mb-4">
+                <div class="pillar-icon-wrapper">
+                  <i class="bi bi-tree"></i>
+                </div>
+                <div>
+                  <h5 style="font-family: var(--ff-heading); font-size: 1.1rem; margin-bottom: 4px;">100% Natural Soy Wax</h5>
+                  <p class="text-muted mb-0" style="font-size: 0.82rem;">Clean, non-toxic, and renewable soy wax sourced sustainably from domestic farms.</p>
+                </div>
+              </div>
+              <div class="pillar-item d-flex gap-3">
+                <div class="pillar-icon-wrapper">
+                  <i class="bi bi-compass"></i>
+                </div>
+                <div>
+                  <h5 style="font-family: var(--ff-heading); font-size: 1.1rem; margin-bottom: 4px;">Custom Scent Alchemy</h5>
+                  <p class="text-muted mb-0" style="font-size: 0.82rem;">Complex olfactory layers composed of pure essential oils and fine perfume compounds.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" />
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+      <div class="container">
+        <span class="section-label reveal">Our Philosophy</span>
+        <h2 class="reveal delay-1">Poured by hand, guided by nature.</h2>
+        <p class="reveal delay-2">
+          Each Vesper &amp; Vine candle is a testament to the slow living
+          movement. We use sustainably sourced soy wax and essential oils,
+          hand-poured in a small Baltimore atelier. Our candle studio is
+          committed to the belief that the quiet beauty of nature's elements can
+          transform every scent into a story of pure elegance and environmental
+          integrity.
+        </p>
+
+        <!-- Brand Philosophy Pillars Section -->
+        <div class="row text-center mt-5 mb-5 g-4 reveal delay-3">
+          <div class="col-md-4">
+            <h4 class="serif-heading mb-2" style="font-family: var(--ff-heading); font-size: 1.3rem; font-weight: 300; color: var(--clr-accent);">I. Patient Sourcing</h4>
+            <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6; max-width: 280px; margin: 0 auto;">We partner exclusively with domestic soy farms that prioritize crop rotation and organic harvesting methods.</p>
+          </div>
+          <div class="col-md-4">
+            <h4 class="serif-heading mb-2" style="font-family: var(--ff-heading); font-size: 1.3rem; font-weight: 300; color: var(--clr-accent);">II. Mindful Formulation</h4>
+            <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6; max-width: 280px; margin: 0 auto;">Our fragrance layers are curated patiently, allowing essential compounds to bond for maximum hot throw consistency.</p>
+          </div>
+          <div class="col-md-4">
+            <h4 class="serif-heading mb-2" style="font-family: var(--ff-heading); font-size: 1.3rem; font-weight: 300; color: var(--clr-accent);">III. Architectural Vessels</h4>
+            <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6; max-width: 280px; margin: 0 auto;">Heavyweight glass and natural cotton wicks are chosen to guarantee clean sootless burns and beautiful secondary utilities.</p>
+          </div>
+        </div>
+
+        <hr class="luxury-divider" />
+
+        <div class="philosophy-icons reveal delay-3">
+          <div class="philosophy-icon">
+            <i class="bi bi-tree"></i>
+            <h5>Pure Soy Wax</h5>
+            <p>100% natural, renewable soy wax sourced from local farms</p>
+          </div>
+          <div class="philosophy-icon">
+            <i class="bi bi-hand-index"></i>
+            <h5>Hand-Poured</h5>
+            <p>Every candle crafted with care in our small-batch studio</p>
+          </div>
+          <div class="philosophy-icon">
+            <i class="bi bi-recycle"></i>
+            <h5>Fully Recyclable</h5>
+            <p>Reusable glass vessels designed for a second life</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="bestsellers-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2>Best Sellers</h2>
+            <p>The fragrances our community loves most</p>
+          </div>
+          <a href="shop.html" class="view-all-link"
+            >View All <i class="bi bi-arrow-right"></i
+          ></a>
+        </div>
+
+        <div class="row">
+          <div class="col-6 col-md-3 reveal delay-1">
+            <div
+              class="product-card"
+              onclick="window.location = 'product.html?id=tuscan-leather'"
+            >
+              <div class="product-card-image">
+                <span class="product-badge">Limited Edition</span>
+                <img
+                  src="images/candle_tuscan_leather.png"
+                  alt="Tuscan Leather candle"
+                  loading="lazy"
+                />
+                <div class="product-card-overlay">
+                  <div class="d-flex flex-column gap-2 w-100 px-3">
+                    <button class="quick-view-btn" onclick="event.stopPropagation(); openQuickView('tuscan-leather');">Quick View</button>
+                    <button class="quick-add-btn" onclick="event.stopPropagation(); addToCart('tuscan-leather');">Quick Add</button>
+                  </div>
+                </div>
+              </div>
+              <h4>Tuscan Leather</h4>
+              <p class="product-scent">Sandalwood &amp; Amber</p>
+              <div
+                class="product-card-rating mb-1 text-warning"
+                style="font-size: 0.75rem"
+              >
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i>
+              </div>
+              <div class="product-card-review-link mb-2">
+                <a
+                  href="product.html?id=tuscan-leather#reviewsList"
+                  onclick="event.stopPropagation()"
+                  >(250+ reviews)</a
+                >
+              </div>
+              <p class="product-price">$48.00</p>
+              <div class="product-features-mini">
+                <span><i class="bi bi-fire"></i> 55h Burn</span>
+                <span><i class="bi bi-leaf"></i> 100% Soy</span>
+                <span><i class="bi bi-hand-index-thumb"></i> Hand Poured</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 reveal delay-2">
+            <div
+              class="product-card"
+              onclick="window.location = 'product.html?id=midnight-fig'"
+            >
+              <div class="product-card-image">
+                <span class="product-badge">Eco Friendly</span>
+                <img
+                  src="images/candle_midnight_fig.png"
+                  alt="Midnight Fig candle"
+                  loading="lazy"
+                />
+                <div class="product-card-overlay">
+                  <div class="d-flex flex-column gap-2 w-100 px-3">
+                    <button class="quick-view-btn" onclick="event.stopPropagation(); openQuickView('midnight-fig');">Quick View</button>
+                    <button class="quick-add-btn" onclick="event.stopPropagation(); addToCart('midnight-fig');">Quick Add</button>
+                  </div>
+                </div>
+              </div>
+              <h4>Midnight Fig</h4>
+              <p class="product-scent">Black Fig &amp; Cedar</p>
+              <div
+                class="product-card-rating mb-1 text-warning"
+                style="font-size: 0.75rem"
+              >
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i>
+              </div>
+              <div class="product-card-review-link mb-2">
+                <a
+                  href="product.html?id=midnight-fig#reviewsList"
+                  onclick="event.stopPropagation()"
+                  >(250+ reviews)</a
+                >
+              </div>
+              <p class="product-price">$52.00</p>
+              <div class="product-features-mini">
+                <span><i class="bi bi-fire"></i> 60h Burn</span>
+                <span><i class="bi bi-leaf"></i> 100% Soy</span>
+                <span><i class="bi bi-hand-index-thumb"></i> Hand Poured</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 reveal delay-3">
+            <div
+              class="product-card"
+              onclick="window.location = 'product.html?id=spring-meadow'"
+            >
+              <div class="product-card-image">
+                <span class="product-badge">New Arrival</span>
+                <img
+                  src="images/candle_spring_meadow.png"
+                  alt="Spring Meadow candle"
+                  loading="lazy"
+                />
+                <div class="product-card-overlay">
+                  <div class="d-flex flex-column gap-2 w-100 px-3">
+                    <button class="quick-view-btn" onclick="event.stopPropagation(); openQuickView('spring-meadow');">Quick View</button>
+                    <button class="quick-add-btn" onclick="event.stopPropagation(); addToCart('spring-meadow');">Quick Add</button>
+                  </div>
+                </div>
+              </div>
+              <h4>Spring Meadow</h4>
+              <p class="product-scent">Wild Hay &amp; Amber</p>
+              <div
+                class="product-card-rating mb-1 text-warning"
+                style="font-size: 0.75rem"
+              >
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-half"></i>
+              </div>
+              <div class="product-card-review-link mb-2">
+                <a
+                  href="product.html?id=spring-meadow#reviewsList"
+                  onclick="event.stopPropagation()"
+                  >(250+ reviews)</a
+                >
+              </div>
+              <p class="product-price">$44.00</p>
+              <div class="product-features-mini">
+                <span><i class="bi bi-fire"></i> 50h Burn</span>
+                <span><i class="bi bi-leaf"></i> 100% Soy</span>
+                <span><i class="bi bi-hand-index-thumb"></i> Hand Poured</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 reveal delay-4">
+            <div
+              class="product-card"
+              onclick="window.location = 'product.html?id=smoked-vanilla'"
+            >
+              <div class="product-card-image">
+                <span class="product-badge">Limited Edition</span>
+                <img
+                  src="images/candle_smoked_vanilla.png"
+                  alt="Smoked Vanilla candle"
+                  loading="lazy"
+                />
+                <div class="product-card-overlay">
+                  <div class="d-flex flex-column gap-2 w-100 px-3">
+                    <button class="quick-view-btn" onclick="event.stopPropagation(); openQuickView('smoked-vanilla');">Quick View</button>
+                    <button class="quick-add-btn" onclick="event.stopPropagation(); addToCart('smoked-vanilla');">Quick Add</button>
+                  </div>
+                </div>
+              </div>
+              <h4>Smoked Vanilla</h4>
+              <p class="product-scent">Vanilla Bean &amp; Smoke</p>
+              <div
+                class="product-card-rating mb-1 text-warning"
+                style="font-size: 0.75rem"
+              >
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i>
+              </div>
+              <div class="product-card-review-link mb-2">
+                <a
+                  href="product.html?id=smoked-vanilla#reviewsList"
+                  onclick="event.stopPropagation()"
+                  >(250+ reviews)</a
+                >
+              </div>
+              <p class="product-price">$56.00</p>
+              <div class="product-features-mini">
+                <span><i class="bi bi-fire"></i> 60h Burn</span>
+                <span><i class="bi bi-leaf"></i> 100% Soy</span>
+                <span><i class="bi bi-hand-index-thumb"></i> Hand Poured</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" />
+
+    <!-- Social Proof Grid Section -->
+    <section class="social-proof-section py-5 bg-cream">
+      <div class="container text-center">
+        <span class="section-label reveal">Community</span>
+        <h2 class="serif-heading mb-2 reveal" style="font-family: var(--ff-heading); font-weight: 300;">Trusted by 10,000+ Homes</h2>
+        <div class="d-flex justify-content-center align-items-center gap-2 mb-4 reveal">
+          <div class="stars text-warning" style="font-size: 1.1rem;">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <span style="font-size: 0.9rem; font-weight: 500; font-family: var(--ff-heading);">4.9/5 Average Rating</span>
+        </div>
+        
+        <div class="row g-4 justify-content-center mt-2">
+          <div class="col-lg-4 col-md-6 reveal delay-1">
+            <div class="proof-card">
+              <div class="proof-img-wrapper">
+                <img src="images/lifestyle_living.png" alt="Customer home living room" class="proof-img img-fluid">
+                <span class="proof-tag">Tuscan Leather</span>
+              </div>
+              <div class="proof-body text-start">
+                <div class="stars text-warning mb-2" style="font-size: 0.8rem;">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <h5 class="proof-title">"Absolutely transforms my space"</h5>
+                <p class="proof-text text-muted">The amber jar glows beautifully in the evening, and the Tuscan Leather scent has this comforting sandalwood note that makes my living room feel like a high-end spa. Highly recommend!</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="proof-author">Sarah K.</span>
+                  <span class="proof-location text-muted">Chicago, IL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 reveal delay-2">
+            <div class="proof-card">
+              <div class="proof-img-wrapper">
+                <img src="images/lifestyle_bedroom.png" alt="Customer bedroom candle" class="proof-img img-fluid">
+                <span class="proof-tag">Midnight Fig</span>
+              </div>
+              <div class="proof-body text-start">
+                <div class="stars text-warning mb-2" style="font-size: 0.8rem;">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <h5 class="proof-title">"The perfect nightstand ritual"</h5>
+                <p class="proof-text text-muted">I burn Midnight Fig every night while reading. The soy wax burns so cleanly, and the cedarwood notes are extremely grounding. The brand's packaging is a work of art in itself.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="proof-author">Daniel R.</span>
+                  <span class="proof-location text-muted">Austin, TX</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 reveal delay-3">
+            <div class="proof-card">
+              <div class="proof-img-wrapper">
+                <img src="images/lifestyle_bath.png" alt="Customer bathroom spa candle" class="proof-img img-fluid">
+                <span class="proof-tag">Spring Meadow</span>
+              </div>
+              <div class="proof-body text-start">
+                <div class="stars text-warning mb-2" style="font-size: 0.8rem;">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <h5 class="proof-title">"Incredible clean burn"</h5>
+                <p class="proof-text text-muted">The sea salt and sage combination is so fresh and clean! It doesn't give me a headache like synthetic store candles. You can really tell these are poured with pure natural soy wax.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="proof-author">Amelia H.</span>
+                  <span class="proof-location text-muted">San Francisco, CA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" />
+
+    <!-- Customer Testimonials Section -->
+    <section
+      class="testimonials-section py-5"
+      style="
+        background-color: var(--clr-cream);
+        border-top: 1px solid var(--clr-border-light);
+        border-bottom: 1px solid var(--clr-border-light);
+      "
+    >
+      <div class="container text-center reveal">
+        <span class="section-label">Reviews</span>
+        <h2
+          class="mb-4"
+          style="font-family: var(--ff-heading); font-weight: 300"
+        >
+          What Our Community Says
+        </h2>
+        <div
+          id="testimonialsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="5000"
+          style="max-width: 600px; margin: 0 auto"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="testimonial-avatar">AM</div>
+              <p
+                class="fs-5 mb-3"
+                style="
+                  font-family: var(--ff-heading);
+                  font-style: italic;
+                  color: var(--clr-text-light);
+                "
+              >
+                "Vesper & Vine candles have transformed my workspace. The
+                Lavender & Wild Honey scent is so grounding without being
+                overpowering. Truly a premium experience."
+              </p>
+              <h5
+                class="fw-bold"
+                style="
+                  font-size: 0.8rem;
+                  font-family: var(--ff-body);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  margin-top: 10px;
+                "
+              >
+                Aria M.
+              </h5>
+              <span class="text-muted" style="font-size: 0.75rem"
+                >Verified Buyer</span
+              >
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-avatar">LD</div>
+              <p
+                class="fs-5 mb-3"
+                style="
+                  font-family: var(--ff-heading);
+                  font-style: italic;
+                  color: var(--clr-text-light);
+                "
+              >
+                "The amber jar is beautiful and sits perfectly on my shelf.
+                Tuscan Leather smells warm, rich, and incredibly luxurious. I'm
+                already on my third jar!"
+              </p>
+              <h5
+                class="fw-bold"
+                style="
+                  font-size: 0.8rem;
+                  font-family: var(--ff-body);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  margin-top: 10px;
+                "
+              >
+                Liam D.
+              </h5>
+              <span class="text-muted" style="font-size: 0.75rem"
+                >Verified Buyer</span
+              >
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-avatar">CR</div>
+              <p
+                class="fs-5 mb-3"
+                style="
+                  font-family: var(--ff-heading);
+                  font-style: italic;
+                  color: var(--clr-text-light);
+                "
+              >
+                "I love the brand's focus on sustainability. The soy wax burns
+                cleanly and slowly. Sea Salt & Sage is my absolute go-to for
+                bath times."
+              </p>
+              <h5
+                class="fw-bold"
+                style="
+                  font-size: 0.8rem;
+                  font-family: var(--ff-body);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  margin-top: 10px;
+                "
+              >
+                Chloe R.
+              </h5>
+              <span class="text-muted" style="font-size: 0.75rem"
+                >Verified Buyer</span
+              >
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-avatar">SL</div>
+              <p
+                class="fs-5 mb-3"
+                style="
+                  font-family: var(--ff-heading);
+                  font-style: italic;
+                  color: var(--clr-text-light);
+                "
+              >
+                "I was skeptical about purchasing candles online, but Midnight
+                Fig is a masterpiece. The depth of the black fig and patchouli
+                notes creates a sanctuary-like atmosphere in my bedroom."
+              </p>
+              <h5
+                class="fw-bold"
+                style="
+                  font-size: 0.8rem;
+                  font-family: var(--ff-body);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  margin-top: 10px;
+                "
+              >
+                Sophia L.
+              </h5>
+              <span class="text-muted" style="font-size: 0.75rem"
+                >Verified Buyer</span
+              >
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-avatar">JK</div>
+              <p
+                class="fs-5 mb-3"
+                style="
+                  font-family: var(--ff-heading);
+                  font-style: italic;
+                  color: var(--clr-text-light);
+                "
+              >
+                "Smoked Vanilla has this incredible oakwood fire crackle feel
+                that is extremely comforting. It is warm, complex, and doesn't
+                smell artificial at all."
+              </p>
+              <h5
+                class="fw-bold"
+                style="
+                  font-size: 0.8rem;
+                  font-family: var(--ff-body);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  margin-top: 10px;
+                "
+              >
+                Julian K.
+              </h5>
+              <span class="text-muted" style="font-size: 0.75rem"
+                >Verified Buyer</span
+              >
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-avatar">MV</div>
+              <p
+                class="fs-5 mb-3"
+                style="
+                  font-family: var(--ff-heading);
+                  font-style: italic;
+                  color: var(--clr-text-light);
+                "
+              >
+                "Beautiful minimal packaging, incredibly fast shipping, and a
+                clean burn that lasts forever. The brand's aesthetic is 10/10."
+              </p>
+              <h5
+                class="fw-bold"
+                style="
+                  font-size: 0.8rem;
+                  font-family: var(--ff-body);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  margin-top: 10px;
+                "
+              >
+                Marcus V.
+              </h5>
+              <span class="text-muted" style="font-size: 0.75rem"
+                >Verified Buyer</span
+              >
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialsCarousel"
+            data-bs-slide="prev"
+            style="width: auto; filter: invert(1); opacity: 0.5"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialsCarousel"
+            data-bs-slide="next"
+            style="width: auto; filter: invert(1); opacity: 0.5"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" />
+
+    <!-- Scent Quiz Section -->
+    <section class="scent-quiz-section py-5" id="scent-quiz">
+      <div class="container">
+        <div class="scent-quiz-card reveal">
+          <div id="quiz-intro-state" class="text-center">
+            <span class="section-label">Aromatherapy Match</span>
+            <h2 class="serif-heading mb-3" style="font-family: var(--ff-heading); font-weight: 300;">Find Your Signature Scent</h2>
+            <p class="text-muted mb-4" style="font-size: 0.9rem; max-width: 500px; margin: 0 auto 1.5rem;">Answer three quick questions about your space, mood, and olfactory preferences to discover your ideal Vesper &amp; Vine match.</p>
+            <button class="btn-vesper-gold px-4 py-2" id="startQuizBtn"><span>Begin Scent Quiz</span></button>
+          </div>
+          
+          <div id="quiz-question-state" style="display: none;" class="text-center">
+            <div class="quiz-progress-wrapper mb-4">
+              <div class="quiz-progress-bar" id="quizProgressBar" style="width: 33%;"></div>
+            </div>
+            <span class="quiz-step-count text-uppercase text-muted" id="quizStepCount" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">Question 1 of 3</span>
+            <h3 class="serif-heading mt-2 mb-4" id="quizQuestionTitle" style="font-family: var(--ff-heading); font-weight: 400;">What is your ideal atmosphere?</h3>
+            <div class="quiz-options-grid" id="quizOptionsContainer">
+              <!-- Dynamically populated options -->
+            </div>
+          </div>
+          
+          <div id="quiz-result-state" style="display: none;" class="text-center">
+            <span class="section-label">Your Olfactory Match</span>
+            <h3 class="serif-heading mb-4" style="font-family: var(--ff-heading); font-weight: 350;">A Sanctuary Formulated For You</h3>
+            <div class="quiz-result-card">
+              <div class="row align-items-center g-4">
+                <div class="col-md-5">
+                  <div class="quiz-result-img-wrapper">
+                    <img id="quizResultImg" src="" alt="Scent recommendation" class="img-fluid rounded-sm">
+                  </div>
+                </div>
+                <div class="col-md-7 text-start">
+                  <span class="product-badge" id="quizResultBadge" style="position: static; display: inline-block; margin-bottom: 8px;">Recommended</span>
+                  <h4 id="quizResultTitle" style="font-family: var(--ff-heading); font-size: 1.6rem; font-weight: 400; margin-bottom: 2px;">Tuscan Leather</h4>
+                  <p id="quizResultScent" class="text-muted font-italic mb-3" style="font-family: var(--ff-heading); font-size: 0.85rem;">Sandalwood &amp; Amber</p>
+                  <p id="quizResultDesc" class="text-muted mb-4" style="font-size: 0.85rem; line-height: 1.6;">Warm, rich sandalwood base layered with gold amber. Perfect for quiet evenings and grounding rituals.</p>
+                  <div class="d-flex gap-3 mt-4">
+                    <a href="#" id="quizResultShopLink" class="btn-vesper-gold py-3 px-4 flex-grow-1 text-center" style="text-decoration: none;"><span>Shop Scent</span></a>
+                    <button class="btn-vesper-outline py-3 px-4 flex-grow-1 text-center" id="restartQuizBtn"><span>Restart Quiz</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" />
+
+    <!-- Lifestyle Gallery: "At Home with Vesper" -->
+    <section class="lifestyle-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <h2>At Home with Vesper</h2>
+          </div>
+          <a href="#" class="view-all-link"
+            >@vesperandvine <i class="bi bi-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="lifestyle-grid reveal-scale">
+        <div class="lifestyle-item">
+          <img
+            src="images/lifestyle_living.png"
+            alt="Candles in living room"
+            loading="lazy"
+          />
+        </div>
+        <div class="lifestyle-item">
+          <img
+            src="images/lifestyle_bath.png"
+            alt="Candles in bathroom spa"
+            loading="lazy"
+          />
+        </div>
+        <div class="lifestyle-item">
+          <img
+            src="images/lifestyle_bedroom.png"
+            alt="Candle on nightstand"
+            loading="lazy"
+          />
+        </div>
+        <div class="lifestyle-item">
+          <img
+            src="images/about_ingredients.png"
+            alt="Candle ingredients"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" />
+
+    <!-- Recently Viewed Section -->
+    <section class="recently-viewed-section py-5" id="recentlyViewedSection" style="display: none;">
+      <div class="container">
+        <div class="section-header reveal mb-4">
+          <div>
+            <h2>Recently Viewed</h2>
+            <p>Scent sanctuaries you recently explored</p>
+          </div>
+        </div>
+        <div class="row" id="recentlyViewedGrid">
+          <!-- Dynamically populated from JS -->
+        </div>
+      </div>
+    </section>
+
+    <hr class="luxury-divider" id="recentlyViewedDivider" style="display: none;" />
+
+    <!-- The Journal / Newsletter -->
+    <section class="journal-section">
+      <div class="container">
+        <div class="reveal">
+          <h2>The Journal</h2>
+          <p>
+            Subscribe for ambiance tips, seasonal scent releases, and stories
+            from our candle studio.
+          </p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="your email address" required />
+            <button type="submit"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer-enhanced">
+      <div class="footer-top-banner">
+        <div class="container">
+          <div class="footer-benefit">
+            <i class="bi bi-truck"></i> Free Shipping Over $100
+          </div>
+          <div class="footer-benefit">
+            <i class="bi bi-arrow-repeat"></i> 30-Day Returns
+          </div>
+          <div class="footer-benefit">
+            <i class="bi bi-shield-check"></i> Secure Payment
+          </div>
+          <div class="footer-benefit">
+            <i class="bi bi-leaf"></i> Eco-Friendly Packaging
+          </div>
+        </div>
+      </div>
+      <div class="footer-main">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+              <div class="footer-brand">
+                <h4
+                  class="d-flex align-items-center"
+                  style="color: var(--clr-white)"
+                >
+                  <svg
+                    class="brand-logo-svg"
+                    viewBox="0 0 40 40"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin-right: 8px"
+                  >
+                    <path
+                      d="M20 8C20 8 13 16 13 22C13 25.866 16.134 29 20 29C23.866 29 27 25.866 27 22C27 16 20 8 20 8Z"
+                      stroke="var(--clr-accent)"
+                      stroke-width="1.5"
+                      fill="none"
+                    />
+                    <path
+                      d="M14 26C17 25 21 21 24 16C27 11 28 8 28 8C28 8 24 10 20 14C16 18 15 23 14 26Z"
+                      fill="var(--clr-accent-light)"
+                      opacity="0.85"
+                      stroke="none"
+                    />
+                  </svg>
+                  <span>Vesper &amp; Vine</span>
+                </h4>
+                <p>
+                  Artisanal fragrances designed to ground your space and elevate
+                  your daily rituals. Consciously crafted in small batches.
+                </p>
+                <div class="footer-social mt-3">
+                  <a href="#" aria-label="Instagram"
+                    ><i class="bi bi-instagram"></i
+                  ></a>
+                  <a href="#" aria-label="Pinterest"
+                    ><i class="bi bi-pinterest"></i
+                  ></a>
+                  <a href="#" aria-label="TikTok"
+                    ><i class="bi bi-tiktok"></i
+                  ></a>
+                  <a href="#" aria-label="YouTube"
+                    ><i class="bi bi-youtube"></i
+                  ></a>
+                </div>
+                <!-- Trustpilot Rating Badge -->
+                <div class="footer-trustpilot-badge">
+                  <div class="trustpilot-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <span
+                    >Excellent 4.9/5 on
+                    <span class="trustpilot-logo-text">Trustpilot</span></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-2 col-md-3">
+              <h6 class="footer-heading">Shop</h6>
+              <ul class="footer-links">
+                <li><a href="shop.html">All Candles</a></li>
+                <li><a href="shop.html">Best Sellers</a></li>
+                <li><a href="shop.html">New Arrivals</a></li>
+                <li><a href="shop.html">Gift Sets</a></li>
+                <li><a href="shop.html">Subscriptions</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-lg-2 col-md-3">
+              <h6 class="footer-heading">Company</h6>
+              <ul class="footer-links">
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="about.html">Sustainability</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">Careers</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <h6 class="footer-heading">Stay Connected</h6>
+              <div class="footer-newsletter-enhanced">
+                <p>
+                  Be the first to know about new scents, seasonal collections,
+                  and exclusive offers.
+                </p>
+                <form class="newsletter-form">
+                  <input
+                    type="email"
+                    placeholder="your email address"
+                    required
+                  />
+                  <button type="submit">
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </form>
+                <div class="footer-payment-icons">
+                  <div
+                    class="footer-payment-icon"
+                    style="background: none; width: auto; height: auto"
+                  >
+                    <svg
+                      viewBox="0 0 36 24"
+                      width="36"
+                      height="24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="36" height="24" rx="3" fill="#1A1F71" />
+                      <path
+                        d="M13.8 15.6h1.7l1.1-6.7h-1.7l-1.1 6.7zm6.7-6.5c-.4-.2-.9-.3-1.4-.3-1.5 0-2.6.8-2.6 2 0 .9.8 1.4 1.4 1.7.6.3.8.5.8.8 0 .4-.5.6-1 .6-.7 0-1.1-.1-1.6-.4l-.2 1.3c.4.2 1.1.3 1.8.3 1.6 0 2.7-.8 2.7-2.1 0-.7-.4-1.2-1.3-1.6-.5-.3-.9-.5-.9-.8 0-.3.3-.6.9-.6.5 0 1 .1 1.3.3l.1-1.3zm3.7-.2h-1.3c-.4 0-.7.2-.9.6l-2.5 6.1h1.8l.4-1h2.2l.2 1h1.6l-1.5-6.7zm-2.2 3.8l.7-2 1 2h-1.7zm-14.8-3.8l1.6 4.3.6-3.1c-.1-.3-.4-.6-.7-.8L7.2 9.1zm3.3 6.7l1-6.7H9.7c-.2 0-.4.1-.5.3L6.4 13.8l2.2 1.8h2.9z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="footer-payment-icon"
+                    style="background: none; width: auto; height: auto"
+                  >
+                    <svg
+                      viewBox="0 0 36 24"
+                      width="36"
+                      height="24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="36" height="24" rx="3" fill="#222" />
+                      <circle cx="15.5" cy="12" r="6" fill="#EB001B" />
+                      <circle
+                        cx="20.5"
+                        cy="12"
+                        r="6"
+                        fill="#F79E1B"
+                        fill-opacity="0.85"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="footer-payment-icon"
+                    style="background: none; width: auto; height: auto"
+                  >
+                    <svg
+                      viewBox="0 0 36 24"
+                      width="36"
+                      height="24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="36" height="24" rx="3" fill="#003087" />
+                      <path
+                        d="M12.5 16.8h1.8l1-6.1h-1.8l-1 6.1zm6-6.1c-.8 0-1.5.3-2 .8l.3-1.8h-1.8l-1 6.1h1.8l.9-5.3c0-.3.2-.5.5-.5h.5c.6 0 1 .4 1 1 0 .2 0 .4-.1.6l-.6 3.7h1.8l.6-3.8c.2-.9-.3-1.8-1.5-1.8z"
+                        fill="#FFF"
+                      />
+                      <path
+                        d="M15.2 6.5C15 5.8 14.3 5 13 5H9.5c-.4 0-.7.3-.8.7L7 16.1c0 .2.1.4.3.4h2.5c.3 0 .5-.2.6-.5l.8-4.9c0-.2.2-.4.5-.4h1c2.1 0 3.7-1 4.2-3.1.2-1 .1-1.7-.5-2.1z"
+                        fill="#0079C1"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="footer-payment-icon"
+                    style="background: none; width: auto; height: auto"
+                  >
+                    <svg
+                      viewBox="0 0 36 24"
+                      width="36"
+                      height="24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="36" height="24" rx="3" fill="#000" />
+                      <path
+                        d="M12.4 8.7c-.5.6-1.3 1-2.1.9c-.1-.8.3-1.6.8-2.2c.5-.6 1.4-1 2.1-.9c.1.8-.3 1.6-.8 2.2zm1 3.5c-.3.5-.8.9-1.3 1.2c-.4.2-1 .3-1.5.3c-.6 0-1.1-.1-1.5-.3c-.5-.3-1-.7-1.3-1.2c-.4-.7-.6-1.5-.6-2.3c0-.8.2-1.6.6-2.3c.3-.5.8-.9 1.3-1.2c.4-.2 1-.3 1.5-.3c.6 0 1.1.1 1.5.3c.5.3 1 .7 1.3 1.2c.4.7.6 1.5.6 2.3c0 .8-.2 1.6-.6 2.3zm5.7-4.1h-1.2v3.7c0 .5.1.8.3.9c.2.1.5.2.9.2h.5V14h-.7c-.9 0-1.5-.2-1.8-.6c-.3-.4-.4-1.1-.4-2.1V8.1h-1.2V7.1h1.2V5.5h1.1v1.6h1.3v1zm6.7 1.9c-.1-.6-.3-1.1-.6-1.4c-.3-.3-.8-.5-1.4-.5c-.6 0-1.1.2-1.5.6c-.4.4-.6.9-.6 1.6V12c.1.6.3 1.1.6 1.4c.3.3.8.5 1.4.5c.6 0 1.1-.2 1.5-.6c.4-.4.6-.9.6-1.6v-2zm.8-1.9v4c0 .6-.2 1.1-.5 1.4c-.3.3-.8.5-1.4.5c-.6 0-1.1-.2-1.4-.5c-.3-.3-.5-.8-.5-1.4v-4c0-.6.2-1.1.5-1.4c.3-.3.8-.5 1.4-.5c.6 0 1.1.2 1.4.5c.3.3.5.8.5 1.4zm6.7.1l-1.5 3.3v2.8h-1.1V9.9L30.6 7.2h1.2l.9 2.1l.9-2.1h1.2z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-enhanced">
+        <div class="container">
+          <p>
+            &copy; 2024 Vesper &amp; Vine. Consciously crafted in small batches &bull; Baltimore, Maryland.
+          </p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Accessibility</a>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification (rendered dynamically by JS) -->
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content quickview-modal-content">
+          <button type="button" class="btn-close quickview-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-body p-0">
+            <div class="row g-0">
+              <div class="col-md-6 quickview-image-container">
+                <img id="quickViewImg" src="" alt="" class="img-fluid quickview-img">
+              </div>
+              <div class="col-md-6 quickview-info-container p-4 d-flex flex-column justify-content-between">
+                <div>
+                  <span class="product-badge mb-2 d-inline-block" id="quickViewBadge">Best Seller</span>
+                  <h3 id="quickViewTitle" class="quickview-title serif-heading">Tuscan Leather</h3>
+                  <p id="quickViewScent" class="quickview-scent text-muted font-italic mb-3">Sandalwood &amp; Amber</p>
+                  <div class="quickview-rating mb-3 d-flex align-items-center gap-2">
+                    <span class="stars text-warning" id="quickViewStars"></span>
+                    <span class="review-count text-muted" id="quickViewReviews" style="font-size: 0.75rem;">(250+ reviews)</span>
+                  </div>
+                  <div class="quickview-price mb-3" id="quickViewPrice">$48.00</div>
+                  <p class="quickview-desc text-muted mb-4" id="quickViewDesc">Artisanal candle...</p>
+                  
+                  <div class="quickview-specs mb-4 d-flex flex-wrap gap-3">
+                    <div class="spec-item"><i class="bi bi-fire"></i> <span id="quickViewBurnTime">55h</span> Burn</div>
+                    <div class="spec-item"><i class="bi bi-leaf"></i> 100% Soy</div>
+                    <div class="spec-item"><i class="bi bi-hand-index-thumb"></i> Hand Poured</div>
+                  </div>
+
+                  <div class="quickview-scent-notes mb-4">
+                    <h6 class="text-uppercase text-muted" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Scent Profile</h6>
+                    <div class="scent-notes-grid d-flex flex-column gap-1" style="font-size: 0.8rem;">
+                      <div><strong class="text-muted">Top Notes:</strong> <span id="quickViewTopNotes"></span></div>
+                      <div><strong class="text-muted">Heart Notes:</strong> <span id="quickViewHeartNotes"></span></div>
+                      <div><strong class="text-muted">Base Notes:</strong> <span id="quickViewBaseNotes"></span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex gap-3 mt-4 pt-3 border-top">
+                  <button class="btn-vesper-gold py-3 px-4 flex-grow-1 text-center" id="quickViewAddBtn"><span>Add to Bag</span></button>
+                  <a href="" id="quickViewDetailsLink" class="btn-vesper-outline py-3 px-4 flex-grow-1 text-center" style="text-decoration: none;"><span>View Details</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
