@@ -588,11 +588,10 @@ export function initOrdersSection(orders) {
         }
       } else if (invoiceBtn) {
         const orderId = invoiceBtn.dataset.id;
-        const msg = `Invoice for order #${orderId} generated and download initiated.`;
+        window.location.href = `/api/orders/${orderId}/invoice`;
+        const msg = `Downloading PDF invoice for order #${orderId}...`;
         if (window.showToast) {
           window.showToast(msg);
-        } else {
-          alert(msg);
         }
       } else if (buyAgainBtn) {
         const orderId = buyAgainBtn.dataset.id;

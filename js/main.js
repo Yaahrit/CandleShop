@@ -440,6 +440,20 @@ document.addEventListener('DOMContentLoaded', () => {
   let cart = JSON.parse(localStorage.getItem('vesperCart') || '[]');
   updateCartCount();
 
+  window.buyNow = function(productId, qty = 1) {
+    window.addToCartQuantity(productId, qty);
+    const cartOffcanvasEl = document.getElementById('cartOffcanvas');
+    if (cartOffcanvasEl) {
+      const cartOff = bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvasEl);
+      cartOff.show();
+    }
+    setTimeout(() => {
+      if (typeof window.triggerCheckoutModal === 'function') {
+        window.triggerCheckoutModal();
+      }
+    }, 450);
+  };
+
   // Add to cart function supporting both old and new signatures
   window.addToCart = function(idOrName, scent, price, image) {
     let product;
@@ -1259,18 +1273,22 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const notesContainer = document.querySelector('.scent-notes');
       if (notesContainer) {
+        notesContainer.className = 'scent-pyramid-container';
         notesContainer.innerHTML = `
-          <div class="scent-note-item">
-            <p class="scent-note-label">Top Notes</p>
-            <p class="scent-note-value">${product.notes.top}</p>
-          </div>
-          <div class="scent-note-item">
-            <p class="scent-note-label">Heart Notes</p>
-            <p class="scent-note-value">${product.notes.heart}</p>
-          </div>
-          <div class="scent-note-item">
-            <p class="scent-note-label">Base Notes</p>
-            <p class="scent-note-value">${product.notes.base}</p>
+          <span class="scent-pyramid-title">Olfactory Structure</span>
+          <div class="scent-pyramid">
+            <div class="pyramid-tier tier-top" title="Evaporates in 5-15 mins. First impression.">
+              <span class="tier-label">Top Notes</span>
+              <span class="tier-value">${product.notes.top}</span>
+            </div>
+            <div class="pyramid-tier tier-heart" title="Lasts for 2-4 hours. Heart of the fragrance.">
+              <span class="tier-label">Heart Notes</span>
+              <span class="tier-value">${product.notes.heart}</span>
+            </div>
+            <div class="pyramid-tier tier-base" title="Lasts for 24+ hours. Anchors the fragrance.">
+              <span class="tier-label">Base Notes</span>
+              <span class="tier-value">${product.notes.base}</span>
+            </div>
           </div>
         `;
       }
@@ -1313,6 +1331,20 @@ document.addEventListener('DOMContentLoaded', () => {
           const qty = parseInt(document.getElementById('qtyInput')?.value || '1');
           addToCartQuantity(product.id, qty);
         });
+      }
+
+      // Buy Now Button Override
+      const buyNowBtn = document.querySelector('.buy-now-btn');
+      if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', () => {
+          const qty = parseInt(document.getElementById('qtyInput')?.value || '1');
+          window.buyNow(product.id, qty);
+        });
+      }
+
+      // Render Dynamic recommendations
+      if (typeof window.renderProductRecommendations === 'function') {
+        window.renderProductRecommendations(product.id);
       }
 
       // Review Stars Dynamic Click Handler
@@ -2253,6 +2285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  window.triggerCheckoutModal = triggerCheckoutModal;
   function triggerCheckoutModal() {
     let modalEl = document.getElementById('checkoutModal');
     if (!modalEl) {
@@ -2264,45 +2297,95 @@ document.addEventListener('DOMContentLoaded', () => {
       modalEl.innerHTML = `
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content" style="border-radius: var(--radius-sm); border: none; background-color: var(--clr-bg);">
-            <div class="modal-header border-bottom-0">
+            <div class="modal-header border-bottom-0 pb-0">
               <h5 class="modal-title" style="font-family: var(--ff-heading); font-weight: 400; color: var(--clr-text);">Secure Checkout</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="checkoutForm">
               <div class="modal-body text-muted" style="font-size: 0.85rem; line-height: 1.6; font-family: var(--ff-body);">
-                <p>Please enter your details to complete your order. All billing and shipping are mocked for simulation.</p>
-                <div class="mb-3">
-                  <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Full Name</label>
+                <p class="mb-3 text-xs">Enter your details and select a luxury gateway to finish your scent sanctuary purchase.</p>
+                <div class="mb-2">
+                  <label class="form-label text-muted mb-1" style="font-size: 0.7rem;">Full Name</label>
                   <input type="text" class="form-control" id="checkoutName" style="font-size: 0.85rem;" required>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Email Address</label>
+                <div class="mb-2">
+                  <label class="form-label text-muted mb-1" style="font-size: 0.7rem;">Email Address</label>
                   <input type="email" class="form-control" id="checkoutEmail" style="font-size: 0.85rem;" required>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Shipping Address</label>
+                  <label class="form-label text-muted mb-1" style="font-size: 0.7rem;">Shipping Address</label>
                   <textarea class="form-control" id="checkoutAddress" rows="2" style="font-size: 0.85rem;" required></textarea>
                 </div>
-                <div class="row g-2 mb-3">
-                  <div class="col-6">
-                    <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Card Number</label>
-                    <input type="text" class="form-control" placeholder="1234 5678 9101 1121" style="font-size: 0.85rem;" required>
-                  </div>
-                  <div class="col-3">
-                    <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Expiry</label>
-                    <input type="text" class="form-control" placeholder="MM/YY" style="font-size: 0.85rem;" required>
-                  </div>
-                  <div class="col-3">
-                    <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">CVV</label>
-                    <input type="password" class="form-control" placeholder="***" style="font-size: 0.85rem;" required>
+
+                <!-- Payment Methods Tabs Selection -->
+                <div class="payment-tabs mb-3">
+                  <label class="form-label text-muted mb-2" style="font-size: 0.7rem;">Payment Method</label>
+                  <ul class="nav nav-pills nav-fill mb-3" id="paymentMethodPills" role="tablist" style="background-color: var(--clr-bg-alt); padding: 4px; border-radius: var(--radius-sm);">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active py-2" id="pill-stripe-tab" data-bs-toggle="pill" data-bs-target="#pill-stripe" type="button" role="tab" style="font-size: 0.72rem; padding: 6px;">Credit Card</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link py-2" id="pill-paypal-tab" data-bs-toggle="pill" data-bs-target="#pill-paypal" type="button" role="tab" style="font-size: 0.72rem; padding: 6px;">PayPal</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link py-2" id="pill-express-tab" data-bs-toggle="pill" data-bs-target="#pill-express" type="button" role="tab" style="font-size: 0.72rem; padding: 6px;">Express Pay</button>
+                    </li>
+                  </ul>
+                  
+                  <div class="tab-content" id="paymentTabContent">
+                    <!-- Stripe Credit Card Form -->
+                    <div class="tab-pane fade show active" id="pill-stripe" role="tabpanel">
+                      <div class="p-3 border rounded" style="background-color: var(--clr-bg-alt); border-color: var(--clr-border) !important;">
+                        <div class="mb-2">
+                          <label class="form-label text-muted mb-1" style="font-size: 0.65rem;">Card Number (Stripe Elements Mock)</label>
+                          <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0 text-muted py-1" style="font-size: 0.8rem; border-color: var(--clr-border);"><i class="bi bi-credit-card"></i></span>
+                            <input type="text" class="form-control border-start-0 py-1" id="stripeCardNum" placeholder="4242 •••• •••• 4242" style="font-size: 0.8rem; border-color: var(--clr-border);">
+                          </div>
+                        </div>
+                        <div class="row g-2">
+                          <div class="col-6">
+                            <label class="form-label text-muted mb-1" style="font-size: 0.65rem;">Expiry Date</label>
+                            <input type="text" class="form-control py-1" id="stripeCardExpiry" placeholder="MM / YY" style="font-size: 0.8rem; border-color: var(--clr-border);">
+                          </div>
+                          <div class="col-6">
+                            <label class="form-label text-muted mb-1" style="font-size: 0.65rem;">CVC</label>
+                            <input type="text" class="form-control py-1" id="stripeCardCvc" placeholder="•••" style="font-size: 0.8rem; border-color: var(--clr-border);">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- PayPal Button Mock -->
+                    <div class="tab-pane fade" id="pill-paypal" role="tabpanel">
+                      <div class="text-center p-3 border rounded" style="background-color: rgba(255, 196, 57, 0.05); border-color: rgba(255, 196, 57, 0.2) !important;">
+                        <div class="paypal-smart-button-mock p-2 rounded" style="background-color: #FFC439; color: #111; font-weight: 700; font-style: italic; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; max-width: 280px; box-shadow: var(--shadow-sm); font-size: 0.8rem;">
+                          <i class="bi bi-paypal text-primary fs-6"></i> Pay with <span style="color: #0079C1;">Pay</span><span style="color: #00457C;">Pal</span>
+                        </div>
+                        <p class="text-muted mt-2 mb-0" style="font-size: 0.68rem;">Click button to launch secure PayPal checkout dialog box.</p>
+                      </div>
+                    </div>
+                    
+                    <!-- Express Checkout Mock -->
+                    <div class="tab-pane fade" id="pill-express" role="tabpanel">
+                      <div class="text-center p-3 border rounded" style="background-color: var(--clr-bg-alt); border-color: var(--clr-border) !important;">
+                        <button type="button" class="btn btn-dark w-100 py-2 d-flex align-items-center justify-content-center gap-2 mb-2" style="border-radius: var(--radius-sm); font-size: 0.8rem;">
+                          <i class="bi bi-apple"></i> Apple Pay
+                        </button>
+                        <button type="button" class="btn btn-light w-100 py-2 d-flex align-items-center justify-content-center gap-2" style="border-radius: var(--radius-sm); border: 1px solid var(--clr-border); font-size: 0.8rem; background-color: var(--clr-white); color: var(--clr-black);">
+                          <i class="bi bi-google"></i> Pay
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
                 <div class="d-flex justify-content-between fw-bold pt-2 border-top" style="color: var(--clr-text); font-size: 0.95rem;">
                   <span>Order Total</span>
                   <span id="checkoutTotalAmount">$0.00</span>
                 </div>
               </div>
-              <div class="modal-footer border-top-0">
+              <div class="modal-footer border-top-0 pt-0">
                 <button type="button" class="btn-vesper-outline" data-bs-dismiss="modal" style="padding: 0.5rem 1.5rem; font-size: 0.7rem;"><span>Cancel</span></button>
                 <button type="submit" class="btn-vesper" style="padding: 0.5rem 1.5rem; font-size: 0.7rem;"><span>Complete Purchase</span></button>
               </div>
@@ -2311,6 +2394,18 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       document.body.appendChild(modalEl);
+
+      // Pre-fill user details from profile if logged in
+      const cachedUser = JSON.parse(localStorage.getItem('vesperUser') || '{}');
+      if (cachedUser.email) {
+        document.getElementById('checkoutName').value = `${cachedUser.firstName || ''} ${cachedUser.lastName || ''}`.trim();
+        document.getElementById('checkoutEmail').value = cachedUser.email;
+        
+        if (cachedUser.addresses && cachedUser.addresses.length > 0) {
+          const primary = cachedUser.addresses.find(a => a.isDefault) || cachedUser.addresses[0];
+          document.getElementById('checkoutAddress').value = `${primary.street}, ${primary.city}, ${primary.state} ${primary.zip}`;
+        }
+      }
 
       const form = modalEl.querySelector('#checkoutForm');
       form.addEventListener('submit', async (e) => {
@@ -2861,6 +2956,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================
+  // PRODUCT RECOMMENDATIONS
+  // ============================================
+  window.renderProductRecommendations = function(productId) {
+    const currentProduct = PRODUCTS_DATA.find(p => p.id === productId);
+    if (!currentProduct) return;
+
+    const recommendationsGrid = document.querySelector('.also-like-section .row');
+    if (!recommendationsGrid) return;
+
+    let matches = PRODUCTS_DATA.filter(p => p.id !== productId && p.scentFamily === currentProduct.scentFamily);
+    if (matches.length < 4) {
+      const others = PRODUCTS_DATA.filter(p => p.id !== productId && p.scentFamily !== currentProduct.scentFamily);
+      matches = [...matches, ...others].slice(0, 4);
+    } else {
+      matches = matches.slice(0, 4);
+    }
+
+    recommendationsGrid.innerHTML = matches.map(p => `
+      <div class="col-6 col-md-3 reveal">
+        <div class="product-card" onclick="window.location='product.html?id=${p.id}'">
+          <div class="product-card-image">
+            ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+            <div class="product-card-overlay">
+              <div class="d-flex flex-column gap-2 w-100 px-3">
+                <button class="quick-view-btn" onclick="event.stopPropagation(); openQuickView('${p.id}');">Quick View</button>
+                <button class="quick-add-btn" onclick="event.stopPropagation(); addToCart('${p.id}');">Quick Add</button>
+              </div>
+            </div>
+          </div>
+          <h4>${p.name}</h4>
+          <p class="product-scent">${p.scent}</p>
+          <div class="product-card-rating mb-1 text-warning" style="font-size: 0.75rem;">
+            ${'<i class="bi bi-star-fill"></i>'.repeat(Math.round(p.rating))}
+            ${'<i class="bi bi-star"></i>'.repeat(5 - Math.round(p.rating))}
+          </div>
+          <div class="product-card-review-link mb-2">
+            <a href="product.html?id=${p.id}#reviewsList" onclick="event.stopPropagation();">(${p.reviews ? p.reviews.length + 248 : 250}+ reviews)</a>
+          </div>
+          <p class="product-price">$${p.price.toFixed(2)}</p>
+          <div class="product-features-mini">
+            <span><i class="bi bi-fire"></i> ${p.burnTime || 55}h Burn</span>
+            <span><i class="bi bi-leaf"></i> 100% Soy</span>
+            <span><i class="bi bi-hand-index-thumb"></i> Hand Poured</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    if (typeof revealObserver !== 'undefined' && revealObserver) {
+      recommendationsGrid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+  };
+
+  // ============================================
   // QUICK VIEW SYSTEM
   // ============================================
   window.openQuickView = function(productId) {
@@ -2871,6 +3021,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // Track in recently viewed
     window.trackRecentlyViewed(productId);
     
+    // Dynamically inject Quick View Modal if missing from page DOM
+    let modalEl = document.getElementById('quickViewModal');
+    if (!modalEl) {
+      modalEl = document.createElement('div');
+      modalEl.className = 'modal fade';
+      modalEl.id = 'quickViewModal';
+      modalEl.tabIndex = -1;
+      modalEl.setAttribute('aria-hidden', 'true');
+      modalEl.innerHTML = `
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content quickview-modal-content" style="border-radius: var(--radius-sm); border: none; background-color: var(--clr-bg);">
+            <button type="button" class="btn-close quickview-close" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: 20px; top: 20px; z-index: 10;"></button>
+            <div class="modal-body p-0">
+              <div class="row g-0">
+                <div class="col-md-6 quickview-image-container">
+                  <img id="quickViewImg" src="" alt="" class="img-fluid quickview-img" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="col-md-6 quickview-info-container p-4 d-flex flex-column justify-content-between">
+                  <div>
+                    <span class="product-badge mb-2 d-inline-block" id="quickViewBadge">Best Seller</span>
+                    <h3 id="quickViewTitle" class="quickview-title serif-heading" style="font-family: var(--ff-heading); font-size: 1.80rem;">Tuscan Leather</h3>
+                    <p id="quickViewScent" class="quickview-scent text-muted font-italic mb-3">Sandalwood &amp; Amber</p>
+                    <div class="quickview-rating mb-3 d-flex align-items-center gap-2">
+                      <span class="stars text-warning" id="quickViewStars"></span>
+                      <span class="review-count text-muted" id="quickViewReviews" style="font-size: 0.75rem;"></span>
+                    </div>
+                    <div class="quickview-price mb-3" id="quickViewPrice" style="font-size: 1.25rem; font-weight: 500;">$48.00</div>
+                    <p class="quickview-desc text-muted mb-4" id="quickViewDesc">Artisanal candle...</p>
+                    
+                    <div class="quickview-specs mb-4 d-flex flex-wrap gap-3" style="font-size: 0.75rem;">
+                      <div class="spec-item"><i class="bi bi-fire"></i> <span id="quickViewBurnTime">55h</span> Burn</div>
+                      <div class="spec-item"><i class="bi bi-leaf"></i> 100% Soy</div>
+                      <div class="spec-item"><i class="bi bi-hand-index-thumb"></i> Hand Poured</div>
+                    </div>
+
+                    <div class="quickview-scent-notes mb-4">
+                      <h6 class="text-uppercase text-muted" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Scent Profile</h6>
+                      <div class="scent-notes-grid d-flex flex-column gap-1" style="font-size: 0.8rem;">
+                        <div><strong class="text-muted">Top Notes:</strong> <span id="quickViewTopNotes"></span></div>
+                        <div><strong class="text-muted">Heart Notes:</strong> <span id="quickViewHeartNotes"></span></div>
+                        <div><strong class="text-muted">Base Notes:</strong> <span id="quickViewBaseNotes"></span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-column gap-2 mt-4 pt-3 border-top">
+                    <div class="d-flex gap-2">
+                      <button class="btn-vesper-gold py-2 px-3 flex-grow-1 text-center" id="quickViewAddBtn"><span>Add to Bag</span></button>
+                      <button class="btn-vesper py-2 px-3 flex-grow-1 text-center" id="quickViewBuyBtn"><span>Buy Now</span></button>
+                    </div>
+                    <a href="" id="quickViewDetailsLink" class="btn-vesper-outline py-2 px-3 text-center" style="text-decoration: none;"><span>View Details</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modalEl);
+    }
+
     const imgEl = document.getElementById('quickViewImg');
     const titleEl = document.getElementById('quickViewTitle');
     const scentEl = document.getElementById('quickViewScent');
@@ -2884,6 +3095,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heartNotesEl = document.getElementById('quickViewHeartNotes');
     const baseNotesEl = document.getElementById('quickViewBaseNotes');
     const addBtn = document.getElementById('quickViewAddBtn');
+    const buyBtn = document.getElementById('quickViewBuyBtn');
     const detailsLink = document.getElementById('quickViewDetailsLink');
     
     if (imgEl) {
@@ -2926,13 +3138,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     if (addBtn) {
-      // Clear previous listeners by replacing the element
       const newAddBtn = addBtn.cloneNode(true);
       addBtn.parentNode.replaceChild(newAddBtn, addBtn);
       newAddBtn.addEventListener('click', () => {
         addToCart(product.id);
         const modal = bootstrap.Modal.getInstance(document.getElementById('quickViewModal'));
         if (modal) modal.hide();
+      });
+    }
+
+    if (buyBtn) {
+      const newBuyBtn = buyBtn.cloneNode(true);
+      buyBtn.parentNode.replaceChild(newBuyBtn, buyBtn);
+      newBuyBtn.addEventListener('click', () => {
+        const modal = bootstrap.Modal.getInstance(document.getElementById('quickViewModal'));
+        if (modal) modal.hide();
+        window.buyNow(product.id, 1);
       });
     }
     

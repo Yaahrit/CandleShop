@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
+const bcrypt = require('bcryptjs');
 
 const DB_DIR = path.join(__dirname, 'data');
 const DB_PATH = path.join(DB_DIR, 'db.json');
@@ -218,19 +219,178 @@ let writeQueue = Promise.resolve();
 async function initDb() {
   try {
     await fs.mkdir(DB_DIR, { recursive: true });
+    let dbData;
+    let exists = true;
     try {
       await fs.access(DB_PATH);
     } catch {
-      // Database file doesn't exist, create it with seed data
-      const initialData = {
+      exists = false;
+    }
+
+    if (!exists) {
+      dbData = {
         products: INITIAL_PRODUCTS,
         orders: [],
         subscribers: [],
-        users: []
+        users: [],
+        coupons: [],
+        giftCards: [],
+        notifications: [],
+        emailLogs: []
       };
-      await fs.writeFile(DB_PATH, JSON.stringify(initialData, null, 2), 'utf8');
-      console.log('Database initialized successfully with seed data.');
+    } else {
+      const data = await fs.readFile(DB_PATH, 'utf8');
+      dbData = JSON.parse(data);
     }
+
+    // Seed default coupons
+    if (!dbData.coupons || dbData.coupons.length === 0) {
+      dbData.coupons = [
+        { code: 'VESPER10', discountType: 'percentage', value: 10, isActive: true },
+        { code: 'SANCTUARY20', discountType: 'percentage', value: 20, isActive: true },
+        { code: 'FREESHIP', discountType: 'fixed', value: 6.95, isActive: true }
+      ];
+    }
+
+    // Seed default gift cards
+    if (!dbData.giftCards || dbData.giftCards.length === 0) {
+      dbData.giftCards = [
+        { code: 'GIFT-50-AMBER', balance: 50.00, isActive: true },
+        { code: 'GIFT-100-MYST', balance: 100.00, isActive: true }
+      ];
+    }
+
+    // Seed users
+    if (!dbData.users) {
+      dbData.users = [];
+    }
+
+    let admin = dbData.users.find(u => u.email === 'admin@vesperandvine.com');
+    if (!admin) {
+      const hashedAdminPassword = bcrypt.hashSync('admin1234', 10);
+      dbData.users.push({
+        id: 'u-admin',
+        name: 'Atelier Admin',
+        email: 'admin@vesperandvine.com',
+        password: hashedAdminPassword,
+        role: 'admin',
+        registeredAt: new Date().toISOString(),
+        addresses: [],
+        paymentMethods: [],
+        notifications: [],
+        points: 1000,
+        referralCode: 'admin-ref'
+      });
+    } else if (!admin.password.startsWith('$2a$')) {
+      admin.password = bcrypt.hashSync('admin1234', 10);
+    }
+
+    let tester = dbData.users.find(u => u.email === 'tester@vesper.com');
+    if (!tester) {
+      const hashedTesterPassword = bcrypt.hashSync('password123', 10);
+      dbData.users.push({
+        id: 'u-tester',
+        name: 'Flora Merrit',
+        email: 'tester@vesper.com',
+        password: hashedTesterPassword,
+        role: 'customer',
+        registeredAt: new Date().toISOString(),
+        addresses: [
+          {
+            id: 'addr-1',
+            label: 'Home',
+            type: 'home',
+            firstName: 'Flora',
+            lastName: 'Merrit',
+            street: '142 King Street',
+            city: 'Charleston',
+            state: 'SC',
+            zip: '29401',
+            country: 'United States',
+            phone: '+1 (555) 123-4567',
+            isDefault: true,
+            lastUsed: 'Jun 14, 2026',
+            orderCount: 8,
+            preferredFor: 'Primary Residence',
+            hasSubscription: true
+          }
+        ],
+        paymentMethods: [
+          {
+            id: 'pm-1',
+            cardholderName: 'Flora Merrit',
+            cardNumber: '•••• •••• •••• 4242',
+            expiryDate: '12/28',
+            cardType: 'Visa',
+            isDefault: true
+          }
+        ],
+        notifications: [
+          {
+            id: 'notif-1',
+            title: 'Welcome to the Scent Atelier',
+            message: 'Thank you for registering. You have been awarded 100 scent points to start your journey.',
+            date: 'Jun 15, 2026',
+            read: false
+          }
+        ],
+        points: 128
+      });
+    } else if (!tester.password.startsWith('$2a$')) {
+      tester.password = bcrypt.hashSync('password123', 10);
+    }
+
+    // Seed default orders if empty
+    if (!dbData.orders || dbData.orders.length === 0) {
+      dbData.orders = [
+        {
+          orderId: 'V&V-294723',
+          date: 'Jun 10, 2026',
+          status: 'delivered',
+          items: [
+            { id: 'lavender-wild-honey', name: 'Lavender & Wild Honey', qty: 1, price: 52, image: 'images/candle_lavender.png', scent: 'French Lavender & Honey' },
+            { id: 'spiced-cedar', name: 'Spiced Cedar', qty: 1, price: 50, image: 'images/candle_spiced_cedar.png', scent: 'Cedar & Cinnamon' }
+          ],
+          total: 102.00,
+          customer: {
+            name: 'Flora Merrit',
+            email: 'tester@vesper.com',
+            address: '142 King Street, Charleston SC 29401'
+          }
+        },
+        {
+          orderId: 'V&V-359610',
+          date: 'Jun 14, 2026',
+          status: 'shipped',
+          items: [
+            { id: 'midnight-fig', name: 'Midnight Fig', qty: 1, price: 52, image: 'images/candle_midnight_fig.png', scent: 'Black Fig & Cedar' }
+          ],
+          total: 52.00,
+          customer: {
+            name: 'Flora Merrit',
+            email: 'tester@vesper.com',
+            address: '142 King Street, Charleston SC 29401'
+          }
+        },
+        {
+          orderId: 'V&V-482019',
+          date: 'Jun 15, 2026',
+          status: 'processing',
+          items: [
+            { id: 'tuscan-leather', name: 'Tuscan Leather', qty: 1, price: 48, image: 'images/candle_tuscan_leather.png', scent: 'Sandalwood & Amber' }
+          ],
+          total: 48.00,
+          customer: {
+            name: 'Flora Merrit',
+            email: 'tester@vesper.com',
+            address: '142 King Street, Charleston SC 29401'
+          }
+        }
+      ];
+    }
+
+    await fs.writeFile(DB_PATH, JSON.stringify(dbData, null, 2), 'utf8');
+    console.log('Database initialized and seeded successfully.');
   } catch (error) {
     console.error('Error initializing database:', error);
   }

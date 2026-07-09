@@ -1,9 +1,32 @@
-/* ============================================
-   VESPER & VINE - Luxury Delivery Destinations Controller
-   Premium Address Management Experience
-   ============================================ */
+import { isHttpMode } from './api.js';
 
 let addresses = [];
+
+async function syncAddressesToServer(action, addressId, addressData) {
+  const token = localStorage.getItem('vesperAuthToken');
+  if (isHttpMode() && token) {
+    try {
+      const res = await fetch('/api/auth/addresses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ action, addressId, addressData })
+      });
+      if (res.ok) {
+        const updatedList = await res.json();
+        const cachedUser = JSON.parse(localStorage.getItem('vesperUser') || '{}');
+        cachedUser.addresses = updatedList;
+        localStorage.setItem('vesperUser', JSON.stringify(cachedUser));
+        return updatedList;
+      }
+    } catch (err) {
+      console.warn('Addresses API call failed. Syncing locally.', err);
+    }
+  }
+  return null;
+}
 
 /* Address type configuration with icons and labels */
 const ADDRESS_TYPES = {
@@ -18,6 +41,12 @@ const ADDRESS_TYPES = {
  * @returns {array}
  */
 function getAddresses() {
+  if (isHttpMode()) {
+    const cachedUser = JSON.parse(localStorage.getItem('vesperUser') || '{}');
+    if (cachedUser.addresses) {
+      return cachedUser.addresses;
+    }
+  }
   let list = JSON.parse(localStorage.getItem('vesperAddresses') || 'null');
 
   // Migration: clear old format without type/label fields
@@ -521,8 +550,18 @@ function saveAddress() {
     list[0].isDefault = true;
   }
 
-  localStorage.setItem('vesperAddresses', JSON.stringify(list));
-  renderAddressesTab();
+  const addressData = {
+    label, type, firstName, lastName, street, city, state, zip, phone, isDefault, country: 'United States'
+  };
+
+  syncAddressesToServer('save', id || null, addressData).then(serverList => {
+    if (serverList) {
+      renderAddressesTab();
+    } else {
+      localStorage.setItem('vesperAddresses', JSON.stringify(list));
+      renderAddressesTab();
+    }
+  });
 
   // Dismiss modal
   const modalEl = document.getElementById('addressModal');
@@ -549,8 +588,14 @@ function deleteAddress(id) {
       list[0].isDefault = true;
     }
 
-    localStorage.setItem('vesperAddresses', JSON.stringify(list));
-    renderAddressesTab();
+    syncAddressesToServer('delete', id).then(serverList => {
+      if (serverList) {
+        renderAddressesTab();
+      } else {
+        localStorage.setItem('vesperAddresses', JSON.stringify(list));
+        renderAddressesTab();
+      }
+    });
 
     if (window.showToast) {
       window.showToast('Destination removed from your address book');
@@ -564,11 +609,21 @@ function deleteAddress(id) {
  */
 function setDefaultAddress(id) {
   let list = getAddresses();
+  const target = list.find(a => a.id === id);
+  if (!target) return;
+
   list.forEach(a => {
     a.isDefault = (a.id === id);
   });
-  localStorage.setItem('vesperAddresses', JSON.stringify(list));
-  renderAddressesTab();
+
+  syncAddressesToServer('save', id, { ...target, isDefault: true }).then(serverList => {
+    if (serverList) {
+      renderAddressesTab();
+    } else {
+      localStorage.setItem('vesperAddresses', JSON.stringify(list));
+      renderAddressesTab();
+    }
+  });
 
   if (window.showToast) {
     window.showToast('Primary delivery destination updated');

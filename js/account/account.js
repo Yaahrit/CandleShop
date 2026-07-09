@@ -10,6 +10,8 @@ import { initSettingsSection } from './settings.js';
 import { renderRewardsTab, initRewardsSection } from './rewards.js';
 import { renderSubscriptionTab, initSubscriptionSection } from './subscription.js';
 import { renderAddressesTab } from './addresses.js';
+import { renderPaymentsTab } from './payments.js';
+import { renderNotificationsTab, initNotificationsSection } from './notifications.js';
 
 // Router section mappings
 const SECTIONS = {
@@ -20,6 +22,8 @@ const SECTIONS = {
   '#settings': { id: 'settingsSection', title: 'Account Settings' },
   '#rewards': { id: 'rewardsSection', title: 'Loyalty Rewards' },
   '#addresses': { id: 'addressesSection', title: 'Address Book' },
+  '#payments': { id: 'paymentsSection', title: 'Payment Methods' },
+  '#notifications': { id: 'notificationsSection', title: 'Notification Center' },
   '#subscription': { id: 'subscriptionSection', title: 'Scent Subscription' }
 };
 
@@ -92,6 +96,12 @@ function renderView(hash) {
       break;
     case '#addresses':
       renderAddressesTab();
+      break;
+    case '#payments':
+      renderPaymentsTab();
+      break;
+    case '#notifications':
+      renderNotificationsTab();
       break;
     case '#subscription':
       renderSubscriptionTab();
@@ -181,6 +191,22 @@ function updateSidebarProfileDisplay(user) {
     sidebarAvatarImg.classList.add('d-none');
     if (sidebarAvatarPlaceholder) sidebarAvatarPlaceholder.classList.remove('d-none');
   }
+
+  // Inject Admin Portal link if user is admin
+  if (user.role === 'admin') {
+    const navList = document.querySelector('.profile-nav');
+    if (navList && !navList.querySelector('a[href="admin.html"]')) {
+      const adminLi = document.createElement('li');
+      adminLi.innerHTML = `<a href="admin.html" style="color: var(--clr-gold); font-weight: 500;"><i class="bi bi-shield-check"></i> Admin Dashboard</a>`;
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        const logoutLi = logoutBtn.parentNode;
+        navList.insertBefore(adminLi, logoutLi);
+      } else {
+        navList.appendChild(adminLi);
+      }
+    }
+  }
 }
 
 /**
@@ -231,6 +257,7 @@ async function initAccountApp() {
       initSettingsSection(currentUser);
       initRewardsSection();
       initSubscriptionSection();
+      initNotificationsSection();
 
       // Setup Routing
       window.addEventListener('hashchange', handleRouting);

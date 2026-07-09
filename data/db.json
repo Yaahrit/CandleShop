@@ -524,7 +524,7 @@
       "id": "u-05d1dd9e",
       "name": "Vesper Tester",
       "email": "tester@vesper.com",
-      "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "password": "$2b$10$GSowDdowhGB0PzVz3hJTfOmgJ/LYx2vXQwmYEi84hbzSeqNtztSrm",
       "registeredAt": "2026-06-12T04:42:39.832Z",
       "token": "578dcb4ccfdcbfaa90e2cbb5f13d2fb6d6a8e8486205b97542e8d13b1f942d2e"
     },
@@ -549,6 +549,51 @@
       "email": "zeenat@134gmail.com",
       "password": "3c10310838afffda1f8ac32aa61cd9a44d8409e7deaad169ae5b05a0867d40bb",
       "registeredAt": "2026-06-16T16:02:18.922Z"
+    },
+    {
+      "id": "u-admin",
+      "name": "Atelier Admin",
+      "email": "admin@vesperandvine.com",
+      "password": "$2b$10$5GJgYm4U2I9aVzrgXUpcquqEu2.C7ZYSzayJVSb.WqwDcbRsCyJKa",
+      "role": "admin",
+      "registeredAt": "2026-06-29T17:38:23.819Z",
+      "addresses": [],
+      "paymentMethods": [],
+      "notifications": [],
+      "points": 1000,
+      "referralCode": "admin-ref"
+    }
+  ],
+  "coupons": [
+    {
+      "code": "VESPER10",
+      "discountType": "percentage",
+      "value": 10,
+      "isActive": true
+    },
+    {
+      "code": "SANCTUARY20",
+      "discountType": "percentage",
+      "value": 20,
+      "isActive": true
+    },
+    {
+      "code": "FREESHIP",
+      "discountType": "fixed",
+      "value": 6.95,
+      "isActive": true
+    }
+  ],
+  "giftCards": [
+    {
+      "code": "GIFT-50-AMBER",
+      "balance": 50,
+      "isActive": true
+    },
+    {
+      "code": "GIFT-100-MYST",
+      "balance": 100,
+      "isActive": true
     }
   ]
 }

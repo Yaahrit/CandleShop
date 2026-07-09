@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Center — Vesper & Vine</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    :root {
+      --clr-admin-bg: #141211;
+      --clr-admin-card: #1e1b1a;
+      --clr-admin-border: rgba(255, 255, 255, 0.07);
+    }
+    
+    body.admin-body {
+      background-color: var(--clr-admin-bg);
+      color: #e5dfd9;
+      font-family: var(--ff-body);
+    }
+    
+    .admin-navbar {
+      background-color: #0c0a0a;
+      border-bottom: 1px solid var(--clr-admin-border);
+      padding: 15px 30px;
+    }
+    
+    .admin-container {
+      display: flex;
+      min-height: calc(100vh - 75px);
+    }
+    
+    .admin-sidebar {
+      width: 260px;
+      background-color: #0c0a0a;
+      border-right: 1px solid var(--clr-admin-border);
+      padding: 30px 20px;
+    }
+    
+    .admin-sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .admin-sidebar-nav li {
+      margin-bottom: 8px;
+    }
+    
+    .admin-sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: #9c958f;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      transition: all 0.25s ease;
+    }
+    
+    .admin-sidebar-nav a:hover,
+    .admin-sidebar-nav a.active {
+      color: var(--clr-white);
+      background-color: var(--clr-admin-card);
+      border-left: 3px solid var(--clr-gold);
+    }
+    
+    .admin-main-panel {
+      flex-grow: 1;
+      padding: 40px;
+      overflow-y: auto;
+    }
+    
+    .admin-metric-card {
+      background-color: var(--clr-admin-card);
+      border: 1px solid var(--clr-admin-border);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .admin-metric-card::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(196, 169, 125, 0.08) 0%, transparent 70%);
+      top: -30px;
+      right: -30px;
+    }
+    
+    .admin-table {
+      background-color: var(--clr-admin-card);
+      border: 1px solid var(--clr-admin-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    
+    .admin-table th {
+      background-color: #0c0a0a;
+      border-bottom: 1px solid var(--clr-admin-border);
+      color: #9c958f;
+      font-weight: 500;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 16px 20px;
+    }
+    
+    .admin-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--clr-admin-border);
+      color: #e5dfd9;
+      font-size: 0.88rem;
+      vertical-align: middle;
+    }
+    
+    .admin-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .badge-admin-status {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 8px;
+      border-radius: 20px;
+    }
+    
+    .badge-admin-status.pending { background-color: rgba(230, 223, 213, 0.1); color: #e6dfd5; }
+    .badge-admin-status.processing { background-color: rgba(196, 162, 101, 0.15); color: var(--clr-gold); }
+    .badge-admin-status.shipped { background-color: rgba(84, 110, 122, 0.2); color: #90a4ae; }
+    .badge-admin-status.delivered { background-color: rgba(46, 125, 50, 0.15); color: #81c784; }
+    
+    .chart-container {
+      background-color: var(--clr-admin-card);
+      border: 1px solid var(--clr-admin-border);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    
+    .form-control-admin {
+      background-color: #141211 !important;
+      border: 1px solid var(--clr-admin-border) !important;
+      color: #e5dfd9 !important;
+      font-size: 0.88rem !important;
+      border-radius: var(--radius-sm) !important;
+    }
+    
+    .form-control-admin:focus {
+      border-color: var(--clr-gold) !important;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- Top Navigation -->
+  <nav class="navbar navbar-expand-lg admin-navbar d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center gap-3">
+      <span class="fs-4 serif-heading" style="font-family: var(--ff-heading); letter-spacing: 0.05em; color: var(--clr-gold);">VESPER & VINE</span>
+      <span class="badge bg-secondary" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em;">Control Center</span>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <span class="text-muted" style="font-size: 0.85rem;" id="adminWelcomeName">Atelier Administrator</span>
+      <a href="profile.html" class="btn-vesper-outline" style="padding: 6px 16px; font-size: 0.72rem;">
+        <span>Return to Sanctuary</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="admin-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <ul class="admin-sidebar-nav">
+        <li><a href="#analytics" class="active" data-section="analytics"><i class="bi bi-graph-up"></i> Analytics Overview</a></li>
+        <li><a href="#catalog" data-section="catalog"><i class="bi bi-tag"></i> Scent Catalog</a></li>
+        <li><a href="#orders" data-section="orders"><i class="bi bi-receipt"></i> Orders Registry</a></li>
+        <li><a href="#customers" data-section="customers"><i class="bi bi-people"></i> Customer Ledger</a></li>
+        <li><a href="#reviews" data-section="reviews"><i class="bi bi-chat-heart"></i> Reviews & Feedback</a></li>
+      </ul>
+    </aside>
+    
+    <!-- Main Panel Content -->
+    <main class="admin-main-panel">
+      
+      <!-- ==================== ANALYTICS PANEL ==================== -->
+      <section id="panel-analytics" class="admin-panel-section">
+        <h2 class="serif-heading mb-4" style="font-family: var(--ff-heading); font-size: 2.2rem; font-weight: 350;">Performance Metrics</h2>
+        
+        <!-- Metrics Row -->
+        <div class="row g-4 mb-5">
+          <div class="col-md-3">
+            <div class="admin-metric-card">
+              <span class="text-muted d-block mb-1" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;">Total Revenue</span>
+              <h3 class="mb-1" style="font-family: var(--ff-heading); color: var(--clr-gold); font-size: 2.1rem;" id="statRevenue">$0.00</h3>
+              <span class="text-success" style="font-size: 0.75rem;"><i class="bi bi-arrow-up-right"></i> +14.2% MoM</span>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="admin-metric-card">
+              <span class="text-muted d-block mb-1" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;">Total Orders</span>
+              <h3 class="mb-1" style="font-family: var(--ff-heading); font-size: 2.1rem;" id="statOrders">0</h3>
+              <span class="text-success" style="font-size: 0.75rem;"><i class="bi bi-arrow-up-right"></i> +8.5% MoM</span>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="admin-metric-card">
+              <span class="text-muted d-block mb-1" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;">Average Order Value</span>
+              <h3 class="mb-1" style="font-family: var(--ff-heading); font-size: 2.1rem;" id="statAov">$0.00</h3>
+              <span class="text-success" style="font-size: 0.75rem;"><i class="bi bi-arrow-up-right"></i> +2.1% MoM</span>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="admin-metric-card">
+              <span class="text-muted d-block mb-1" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;">Conversion Rate</span>
+              <h3 class="mb-1" style="font-family: var(--ff-heading); font-size: 2.1rem;">3.84%</h3>
+              <span class="text-success" style="font-size: 0.75rem;"><i class="bi bi-arrow-up-right"></i> +0.4% MoM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sales Trend SVG Chart -->
+        <div class="chart-container">
+          <h5 class="mb-4" style="font-family: var(--ff-heading); font-weight: 400;">Daily Sales Trends (Trailing 7 Days)</h5>
+          <div class="d-flex justify-content-center">
+            <!-- Dynamic SVG Sales Chart -->
+            <svg id="salesChartSvg" width="100%" height="280" viewBox="0 0 800 280" style="background-color: transparent; border-radius: var(--radius-sm); overflow: visible;">
+              <!-- Grid Lines -->
+              <line x1="50" y1="30" x2="750" y2="30" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <line x1="50" y1="90" x2="750" y2="90" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <line x1="50" y1="150" x2="750" y2="150" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <line x1="50" y1="210" x2="750" y2="210" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <line x1="50" y1="230" x2="750" y2="230" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              
+              <!-- Axes Labels -->
+              <text x="35" y="35" fill="#6d655f" font-size="10" text-anchor="end">$2,000</text>
+              <text x="35" y="95" fill="#6d655f" font-size="10" text-anchor="end">$1,500</text>
+              <text x="35" y="155" fill="#6d655f" font-size="10" text-anchor="end">$1,000</text>
+              <text x="35" y="215" fill="#6d655f" font-size="10" text-anchor="end">$500</text>
+              
+              <!-- Dynamic line points go here via JS -->
+              <path id="chartPath" d="" fill="none" stroke="var(--clr-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="chartArea" d="" fill="url(#chartGrad)" opacity="0.15" />
+              
+              <!-- Gradients definition -->
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--clr-gold)" />
+                  <stop offset="100%" stop-color="transparent" />
+                </linearGradient>
+              </defs>
+              
+              <!-- X Axis Labels Container -->
+              <g id="chartLabels"></g>
+              <g id="chartDots"></g>
+            </svg>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ==================== CATALOG PANEL ==================== -->
+      <section id="panel-catalog" class="admin-panel-section" style="display: none;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="serif-heading" style="font-family: var(--ff-heading); font-size: 2.2rem; font-weight: 350;">Scent Catalog</h2>
+          <button class="btn-vesper" id="btnAdminAddProduct" style="padding: 8px 20px; font-size: 0.8rem;">
+            <span>Add Scent Product</span>
+          </button>
+        </div>
+
+        <div class="admin-table-responsive">
+          <table class="table admin-table w-100">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Scent Family</th>
+                <th>Stock Price</th>
+                <th>Burn Time</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="catalogTableBody">
+              <!-- Dynamically rendered rows -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== ORDERS PANEL ==================== -->
+      <section id="panel-orders" class="admin-panel-section" style="display: none;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="serif-heading" style="font-family: var(--ff-heading); font-size: 2.2rem; font-weight: 350;">Orders Registry</h2>
+          <button class="btn-vesper-outline" id="btnExportOrdersCsv" style="padding: 6px 18px; font-size: 0.78rem;">
+            <span>Export Orders (CSV)</span>
+          </button>
+        </div>
+
+        <div class="admin-table-responsive">
+          <table class="table admin-table w-100">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Items Count</th>
+                <th>Grand Total</th>
+                <th>Tracking Status</th>
+                <th class="text-end">Details & Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <!-- Dynamically populated orders -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== CUSTOMERS PANEL ==================== -->
+      <section id="panel-customers" class="admin-panel-section" style="display: none;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="serif-heading" style="font-family: var(--ff-heading); font-size: 2.2rem; font-weight: 350;">Customer Ledger</h2>
+          <button class="btn-vesper-outline" id="btnExportCustomersCsv" style="padding: 6px 18px; font-size: 0.78rem;">
+            <span>Export Customers (CSV)</span>
+          </button>
+        </div>
+
+        <div class="admin-table-responsive">
+          <table class="table admin-table w-100">
+            <thead>
+              <tr>
+                <th>Client Name</th>
+                <th>Email Address</th>
+                <th>Registered Date</th>
+                <th>Total Purchases</th>
+                <th>Scent Loyalty Points</th>
+                <th class="text-end">Point Balance Modification</th>
+              </tr>
+            </thead>
+            <tbody id="customersTableBody">
+              <!-- Dynamically populated customers list -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== REVIEWS PANEL ==================== -->
+      <section id="panel-reviews" class="admin-panel-section" style="display: none;">
+        <h2 class="serif-heading mb-4" style="font-family: var(--ff-heading); font-size: 2.2rem; font-weight: 350;">Atelier Feedback Desk</h2>
+        
+        <div class="reviews-feed" id="adminReviewsFeed">
+          <!-- Dynamically populated review items -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- PRODUCT CRUD DIALOG MODAL -->
+  <div class="modal fade" id="productCrudModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="border-radius: var(--radius-sm); border: none; background-color: var(--clr-admin-card);">
+        <div class="modal-header border-bottom-0 p-4">
+          <h5 class="modal-title serif-heading text-white" id="productModalTitle" style="font-family: var(--ff-heading); font-size: 1.5rem;">Add Product Detail</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="productCrudForm">
+          <input type="hidden" id="crudProductId">
+          <div class="modal-body p-4 text-muted" style="font-size: 0.88rem;">
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Product Name</label>
+                <input type="text" class="form-control form-control-admin" id="crudProductName" required placeholder="Midnight Fig">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Scent Accord Summary</label>
+                <input type="text" class="form-control form-control-admin" id="crudProductScent" required placeholder="Black Fig & Cedar">
+              </div>
+            </div>
+            <div class="row g-3 mb-3">
+              <div class="col-md-4">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Price ($ USD)</label>
+                <input type="number" step="0.01" class="form-control form-control-admin" id="crudProductPrice" required placeholder="48.00">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Burn Time (Hours)</label>
+                <input type="number" class="form-control form-control-admin" id="crudProductBurn" required placeholder="55">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Scent Family</label>
+                <select class="form-select form-control-admin" id="crudProductFamily">
+                  <option value="woody">Woody</option>
+                  <option value="floral">Floral</option>
+                  <option value="fresh">Fresh</option>
+                  <option value="warm">Warm & Spicy</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Product Image Filename</label>
+              <input type="text" class="form-control form-control-admin" id="crudProductImg" required placeholder="images/candle_midnight_fig.png">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Detailed Scent Description</label>
+              <textarea class="form-control form-control-admin" id="crudProductDesc" rows="3" required placeholder="Earthysweet fig blends with smoky dark cedarwood..."></textarea>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="row g-2 mb-3">
+              <div class="col-md-4">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Top Notes</label>
+                <input type="text" class="form-control form-control-admin" id="crudNotesTop" placeholder="Black Fig, Neroli">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Heart Notes</label>
+                <input type="text" class="form-control form-control-admin" id="crudNotesHeart" placeholder="Cedarwood, Jasmine">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label text-muted mb-1" style="font-size: 0.75rem;">Base Notes</label>
+                <input type="text" class="form-control form-control-admin" id="crudNotesBase" placeholder="Sandalwood, Amber">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 p-4">
+            <button type="button" class="btn-vesper-outline" data-bs-dismiss="modal" style="padding: 8px 24px; font-size: 0.75rem;"><span>Close</span></button>
+            <button type="submit" class="btn-vesper" style="padding: 8px 24px; font-size: 0.75rem;"><span>Save Changes</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
